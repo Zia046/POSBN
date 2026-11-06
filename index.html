@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Burhan Nexus POS - Point of Sale Software</title>
+<meta name="description" content="Burhan Nexus Point of Sale software for shops. Billing, stock and daily reports in one simple program. Only PKR 10,000.">
+<style>
+  :root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#22c55e;--accent2:#38bdf8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px}
+  header{padding:18px 0;border-bottom:1px solid #334155}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:800;font-size:1.2rem;color:var(--accent2)}
+  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:1rem}
+  .btn-wa{background:var(--accent);color:#052e16}
+  .btn-mail{background:transparent;border:2px solid var(--accent2);color:var(--accent2)}
+  .hero{padding:56px 0 40px;text-align:center}
+  .hero h1{font-size:2.1rem;line-height:1.2;margin-bottom:14px}
+  .hero p{color:var(--muted);max-width:600px;margin:0 auto 24px;font-size:1.05rem}
+  .hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  section{padding:36px 0}
+  h2{text-align:center;font-size:1.6rem;margin-bottom:24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{background:var(--card);border-radius:14px;padding:20px}
+  .card h3{margin-bottom:6px;color:var(--accent2);font-size:1.1rem}
+  .card p{color:var(--muted);font-size:.95rem}
+  .price{background:var(--card);border-radius:18px;padding:32px 20px;text-align:center;max-width:420px;margin:0 auto;border:2px solid var(--accent)}
+  .price .amt{font-size:2.6rem;font-weight:800;color:var(--accent)}
+  .price ul{list-style:none;margin:18px 0 22px;text-align:left}
+  .price li{padding:6px 0;border-bottom:1px solid #334155}
+  .price li::before{content:"✓ ";color:var(--accent)}
+  .contact{text-align:center}
+  .contact p{color:var(--muted);margin-bottom:18px}
+  .contact .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  footer{padding:24px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid #334155;margin-top:20px}
+  @media(max-width:520px){.hero h1{font-size:1.7rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Burhan Nexus</span>
+    <a class="btn btn-wa wa-link" href="#">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>Point of Sale Software<br>for Your Shop</h1>
+    <p>Fast billing, stock tracking and daily sales reports in one simple program. Ready to use, easy to learn.</p>
+    <div class="btns">
+      <a class="btn btn-wa wa-link" href="#">Order on WhatsApp</a>
+      <a class="btn btn-mail mail-link" href="#">Email Us</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>What You Get</h2>
+      <div class="grid">
+        <div class="card"><h3>Quick Billing</h3><p>Make sales and print receipts in seconds.</p></div>
+        <div class="card"><h3>Stock Management</h3><p>Keep track of items and know what is running low.</p></div>
+        <div class="card"><h3>Sales Reports</h3><p>See daily and monthly sales and understand your profit.</p></div>
+        <div class="card"><h3>Easy to Use</h3><p>Simple screens so your staff can learn it quickly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Price</h2>
+      <div class="price">
+        <div class="amt">PKR 10,000</div>
+        <div style="color:var(--muted)">One-time price</div>
+        <ul>
+          <li>Burhan Nexus POS software</li>
+          <li>Setup guidance</li>
+          <li>Support on WhatsApp and email</li>
+        </ul>
+        <a class="btn btn-wa wa-link" href="#">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap contact">
+      <h2>Contact Us</h2>
+      <p>Have a question or want a demo? Message us anytime.</p>
+      <div class="btns">
+        <a class="btn btn-wa wa-link" href="#">WhatsApp</a>
+        <a class="btn btn-mail mail-link" href="#">Email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr"></span> Burhan Nexus. All rights reserved.</footer>
+
+<script>
+  // ====== EDIT THESE TWO LINES ======
+  var WHATSAPP = "923XXXXXXXXX";   // country code ke sath, bina + aur spaces ke (e.g. 923001234567)
+  var EMAIL    = "your@email.com";
+  // ==================================
+
+  var msg = encodeURIComponent("Hello, I want to buy Burhan Nexus POS software (PKR 10,000).");
+  document.querySelectorAll(".wa-link").forEach(function(a){
+    a.href = "https://wa.me/" + WHATSAPP + "?text=" + msg;
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  document.querySelectorAll(".mail-link").forEach(function(a){
+    a.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Burhan Nexus POS inquiry");
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
