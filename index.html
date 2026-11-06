@@ -52,6 +52,13 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .cart .tot{border:0;color:var(--text);font-weight:800;font-size:.95rem;margin-top:6px}
 .cart .pay{background:var(--grad);color:#04210f;text-align:center;border-radius:8px;padding:8px;margin-top:8px;font-weight:800;display:block}
 .mock small{display:block;text-align:center;color:var(--muted);margin-top:8px;font-size:.7rem}
+.shot{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.shot img{display:block;width:100%;height:auto}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.gal figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+.gal figure .shot{box-shadow:none}
+.gal figcaption{color:var(--muted);font-size:.92rem;padding:10px 4px 2px;text-align:center}
+.gal .wide{grid-column:1/-1}
 /* sections */
 section{padding:52px 0}
 .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -110,24 +117,7 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
     </div>
     <div class="price-tag"><span data-t="only">Only</span> <b>PKR 10,000</b> · <span data-t="onetime">one-time price</span></div>
   </div>
-  <div class="mock" aria-hidden="true">
-    <div class="bar"><i></i><i></i><i></i></div>
-    <div class="pos">
-      <div class="items">
-        <div class="it"><b>Item A</b><span>Rs 500</span></div>
-        <div class="it"><b>Item B</b><span>Rs 1,200</span></div>
-        <div class="it"><b>Item C</b><span>Rs 350</span></div>
-        <div class="it"><b>Item D</b><span>Rs 2,000</span></div>
-      </div>
-      <div class="cart">
-        <div><span>Item A x2</span><span>1,000</span></div>
-        <div><span>Item C x1</span><span>350</span></div>
-        <div class="tot"><span>Total</span><span>Rs 1,350</span></div>
-        <span class="pay">Pay</span>
-      </div>
-    </div>
-    <small data-t="mock_note">Sample screen for illustration</small>
-  </div>
+  <a class="shot" href="images/home.png" target="_blank" rel="noopener"><img src="images/home.png" alt="Burhan Nexus POS home screen" width="1366" height="660" fetchpriority="high"></a>
 </div>
 
 <section class="alt" id="features">
@@ -138,12 +128,28 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
       <div class="card"><div class="ic">🧾</div><h3 data-t="f1h">Quick Billing</h3><p data-t="f1p">Make a sale and print the receipt in seconds.</p></div>
       <div class="card"><div class="ic">📦</div><h3 data-t="f2h">Stock Management</h3><p data-t="f2p">Track your items and see what is running low.</p></div>
       <div class="card"><div class="ic">📊</div><h3 data-t="f3h">Sales Reports</h3><p data-t="f3p">Check daily and monthly sales to understand your business.</p></div>
+      <div class="card"><div class="ic">💹</div><h3 data-t="f5h">Profit &amp; Loss</h3><p data-t="f5p">See your profit for the month and the year.</p></div>
+      <div class="card"><div class="ic">💰</div><h3 data-t="f6h">Cash Recovery</h3><p data-t="f6p">Keep track of what customers owe you and collect payments.</p></div>
+      <div class="card"><div class="ic">📱</div><h3 data-t="f7h">Phones &amp; Barcode Search</h3><p data-t="f7p">Search by name, ID or barcode and keep phone stock in order.</p></div>
+      <div class="card"><div class="ic">☁️</div><h3 data-t="f8h">Backup</h3><p data-t="f8p">Back up your data so your records stay safe.</p></div>
       <div class="card"><div class="ic">🖱️</div><h3 data-t="f4h">Easy to Use</h3><p data-t="f4p">Simple screens, so your staff can learn it quickly.</p></div>
     </div>
   </div>
 </section>
 
-<section id="how">
+<section id="screens">
+  <div class="wrap">
+    <h2 data-t="g_h">See it in action</h2>
+    <p class="sub" data-t="g_sub">Real screenshots from the software. Tap to enlarge.</p>
+    <div class="gal">
+      <figure class="wide"><a class="shot" href="images/dashboard.png" target="_blank" rel="noopener"><img loading="lazy" src="images/dashboard.png" alt="Burhan Nexus dashboard with sales charts" width="1366" height="660"></a><figcaption data-t="cap1">Dashboard: sales, stock, profit and charts at a glance</figcaption></figure>
+      <figure><a class="shot" href="images/home.png" target="_blank" rel="noopener"><img loading="lazy" src="images/home.png" alt="Burhan Nexus home screen" width="1366" height="660"></a><figcaption data-t="cap2">Home screen: one click to every job</figcaption></figure>
+      <figure><a class="shot" href="images/sale-invoice.png" target="_blank" rel="noopener"><img loading="lazy" src="images/sale-invoice.png" alt="Burhan Nexus sale invoice screen" width="1366" height="660"></a><figcaption data-t="cap3">Sale invoice: search, bill and print</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how">
   <div class="wrap">
     <h2 data-t="h_h">How to get it</h2>
     <p class="sub" data-t="h_sub">Three easy steps.</p>
@@ -155,7 +161,7 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
   </div>
 </section>
 
-<section class="alt" id="price">
+<section id="price">
   <div class="wrap">
     <h2 data-t="p_h">Simple price</h2>
     <p class="sub" data-t="p_sub">No monthly fee. Pay once.</p>
@@ -172,7 +178,7 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
   </div>
 </section>
 
-<section id="faq">
+<section class="alt" id="faq">
   <div class="wrap">
     <h2 data-t="q_h">Questions</h2>
     <p class="sub"></p>
@@ -183,7 +189,7 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
   </div>
 </section>
 
-<section class="alt contact" id="contact">
+<section class="contact" id="contact">
   <div class="wrap">
     <h2 data-t="c_h">Contact us</h2>
     <p class="sub" data-t="c_sub">Ask a question or ask for a demo.</p>
@@ -200,20 +206,20 @@ footer{padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.85rem
 
 <script>
 // ====== EDIT THESE TWO LINES ======
-var WHATSAPP = "923XXXXXXXXX";   // country code ke sath, bina + ke (e.g. 923001234567)
-var EMAIL    = "your@email.com";
+var WHATSAPP = "923475093446";
+var EMAIL    = "Ziaullah.046@gmail.com";
 // ==================================
 
 var T = {
  en:{nav_cta:"WhatsApp",badge:"Point of Sale Software",h1a:"Run your shop",h1b:"faster and smarter",hero_p:"Billing, stock and daily sales reports in one simple program. Easy for you, easy for your staff.",cta1:"Order on WhatsApp",cta2:"Email Us",only:"Only",onetime:"one-time price",mock_note:"Sample screen for illustration",
-  f_h:"Everything your shop needs",f_sub:"Simple tools that save time every day.",f1h:"Quick Billing",f1p:"Make a sale and print the receipt in seconds.",f2h:"Stock Management",f2p:"Track your items and see what is running low.",f3h:"Sales Reports",f3p:"Check daily and monthly sales to understand your business.",f4h:"Easy to Use",f4p:"Simple screens, so your staff can learn it quickly.",
+  f_h:"Everything your shop needs",f_sub:"Simple tools that save time every day.",f1h:"Quick Billing",f1p:"Make a sale and print the receipt in seconds.",f2h:"Stock Management",f2p:"Track your items and see what is running low.",f3h:"Sales Reports",f3p:"Check daily and monthly sales to understand your business.",f4h:"Easy to Use",f4p:"Simple screens, so your staff can learn it quickly.",f5h:"Profit & Loss",f5p:"See your profit for the month and the year.",f6h:"Cash Recovery",f6p:"Keep track of what customers owe you and collect payments.",f7h:"Phones & Barcode Search",f7p:"Search by name, ID or barcode and keep phone stock in order.",f8h:"Backup",f8p:"Back up your data so your records stay safe.",g_h:"See it in action",g_sub:"Real screenshots from the software. Tap to enlarge.",cap1:"Dashboard: sales, stock, profit and charts at a glance",cap2:"Home screen: one click to every job",cap3:"Sale invoice: search, bill and print",
   h_h:"How to get it",h_sub:"Three easy steps.",s1h:"Message us",s1p:"Send us a message on WhatsApp or email.",s2h:"Pay PKR 10,000",s2p:"We will tell you the payment options.",s3h:"Start selling",s3p:"Get the software and guidance to set it up.",
   p_h:"Simple price",p_sub:"No monthly fee. Pay once.",onetime2:"One-time price",pl1:"Burhan Nexus POS software",pl2:"Setup guidance",pl3:"Support on WhatsApp and email",buy:"Buy Now",
   q_h:"Questions",q1:"Is the price one-time?",a1:"Yes, PKR 10,000 is a one-time price.",q2:"How can I see a demo?",a2:"Message us on WhatsApp and we will show you how it works.",q3:"Can my staff use it easily?",a3:"Yes. The screens are simple and easy to learn.",q4:"How do I get support?",a4:"You can contact us on WhatsApp or email anytime.",
   c_h:"Contact us",c_sub:"Ask a question or ask for a demo.",cwa:"WhatsApp",cmail:"Email",rights:"All rights reserved","float":"💬 WhatsApp",
   msg:"Hello, I want to buy Burhan Nexus POS software (PKR 10,000)."},
  ur:{nav_cta:"واٹس ایپ",badge:"پوائنٹ آف سیل سافٹ ویئر",h1a:"اپنی دکان چلائیں",h1b:"تیز اور آسان طریقے سے",hero_p:"بلنگ، اسٹاک اور روزانہ سیلز رپورٹ ایک آسان پروگرام میں۔ آپ کے لیے بھی آسان، آپ کے اسٹاف کے لیے بھی۔",cta1:"واٹس ایپ پر آرڈر کریں",cta2:"ای میل کریں",only:"صرف",onetime:"ایک بار کی قیمت",mock_note:"مثال کے لیے نمونہ اسکرین",
-  f_h:"آپ کی دکان کی ضرورت کی ہر چیز",f_sub:"آسان ٹولز جو روزانہ وقت بچائیں۔",f1h:"تیز بلنگ",f1p:"چند سیکنڈ میں سیل کریں اور رسید پرنٹ کریں۔",f2h:"اسٹاک مینجمنٹ",f2p:"اپنی اشیاء کا حساب رکھیں اور دیکھیں کیا کم ہو رہا ہے۔",f3h:"سیلز رپورٹس",f3p:"روزانہ اور ماہانہ سیل دیکھ کر اپنا کاروبار سمجھیں۔",f4h:"استعمال میں آسان",f4p:"سادہ اسکرینز، اسٹاف جلدی سیکھ لیتا ہے۔",
+  f_h:"آپ کی دکان کی ضرورت کی ہر چیز",f_sub:"آسان ٹولز جو روزانہ وقت بچائیں۔",f1h:"تیز بلنگ",f1p:"چند سیکنڈ میں سیل کریں اور رسید پرنٹ کریں۔",f2h:"اسٹاک مینجمنٹ",f2p:"اپنی اشیاء کا حساب رکھیں اور دیکھیں کیا کم ہو رہا ہے۔",f3h:"سیلز رپورٹس",f3p:"روزانہ اور ماہانہ سیل دیکھ کر اپنا کاروبار سمجھیں۔",f4h:"استعمال میں آسان",f4p:"سادہ اسکرینز، اسٹاف جلدی سیکھ لیتا ہے۔",f5h:"نفع نقصان",f5p:"مہینے اور سال کا منافع دیکھیں۔",f6h:"کیش ریکوری",f6p:"دیکھیں گاہکوں کے ذمے کتنی رقم ہے اور وصولی کریں۔",f7h:"موبائل اور بارکوڈ سرچ",f7p:"نام، آئی ڈی یا بارکوڈ سے تلاش کریں اور موبائل اسٹاک سنبھالیں۔",f8h:"بیک اپ",f8p:"اپنا ڈیٹا بیک اپ کریں تاکہ ریکارڈ محفوظ رہے۔",g_h:"خود دیکھیں",g_sub:"سافٹ ویئر کی اصل اسکرین شاٹس۔ بڑا کرنے کے لیے ٹچ کریں۔",cap1:"ڈیش بورڈ: سیل، اسٹاک، منافع اور چارٹ ایک نظر میں",cap2:"ہوم اسکرین: ہر کام ایک کلک پر",cap3:"سیل انوائس: تلاش کریں، بل بنائیں اور پرنٹ کریں",
   h_h:"کیسے حاصل کریں",h_sub:"تین آسان مراحل۔",s1h:"ہمیں میسج کریں",s1p:"واٹس ایپ یا ای میل پر پیغام بھیجیں۔",s2h:"10,000 روپے ادا کریں",s2p:"ہم ادائیگی کے طریقے بتا دیں گے۔",s3h:"بیچنا شروع کریں",s3p:"سافٹ ویئر اور سیٹ اپ کی رہنمائی حاصل کریں۔",
   p_h:"سادہ قیمت",p_sub:"کوئی ماہانہ فیس نہیں۔ ایک بار ادائیگی۔",onetime2:"ایک بار کی قیمت",pl1:"برہان نیکسس POS سافٹ ویئر",pl2:"سیٹ اپ کی رہنمائی",pl3:"واٹس ایپ اور ای میل پر سپورٹ",buy:"ابھی خریدیں",
   q_h:"سوالات",q1:"کیا قیمت ایک بار کی ہے؟",a1:"جی ہاں، 10,000 روپے ایک بار کی قیمت ہے۔",q2:"ڈیمو کیسے دیکھوں؟",a2:"ہمیں واٹس ایپ پر میسج کریں، ہم دکھا دیں گے۔",q3:"کیا میرا اسٹاف آسانی سے چلا لے گا؟",a3:"جی ہاں، اسکرینز سادہ ہیں اور جلدی سمجھ آ جاتی ہیں۔",q4:"سپورٹ کیسے ملے گی؟",a4:"آپ کسی بھی وقت واٹس ایپ یا ای میل پر رابطہ کر سکتے ہیں۔",
