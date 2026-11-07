@@ -1,0 +1,9 @@
+{
+  "name": "burhan-nexus-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official website of Burhan Nexus (static site, no dependencies)",
+  "type": "module",
+  "scripts": { "build": "node build.mjs", "start": "node build.mjs && npx serve dist" },
+  "engines": { "node": ">=18" }
+}
