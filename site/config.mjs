@@ -9,6 +9,21 @@ export default {
   // The public address of the website (used for sitemap, canonical links, social sharing)
   siteUrl: 'https://posbn.netlify.app',
 
+  // ---- Founder (shown on the home page) ----
+  founder: {
+    name: 'Ziaullah',
+    role: 'Founder & Software Developer',
+    photo: '/assets/img/founder.jpg',
+    photoSmall: '/assets/img/founder-600.jpg',
+    alt: 'Ziaullah, founder and software developer of Burhan Nexus, at his desk',
+    title: 'About Me – Founder of Burhan Nexus',
+    paragraphs: [
+      'I am Ziaullah, the founder of Burhan Nexus, an innovative technology brand focused on developing smart software solutions, modern business applications, and digital services.',
+      'My mission is to simplify everyday business operations through innovative, reliable, and user-friendly technology. I am passionate about transforming ideas into practical digital solutions that help businesses grow, improve efficiency, and embrace the future of technology.',
+      'At Burhan Nexus, we believe in innovation, quality, and continuous improvement — building smarter solutions for a better digital future.',
+    ],
+  },
+
   company: {
     name: 'BURHAN NEXUS',
     brand: 'Burhan Nexus',

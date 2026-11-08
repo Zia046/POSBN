@@ -123,6 +123,7 @@ export function page({ path, title, description, body, image, schema = [], noind
     description: company.intro,
     email: contact.email,
     ...(contact.facebook ? { sameAs: [contact.facebook] } : {}),
+    ...(cfg.founder ? { founder: { '@type': 'Person', name: cfg.founder.name, jobTitle: cfg.founder.role } } : {}),
     contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: contact.email, telephone: '+' + contact.whatsapp }],
   };
   const ld = [org, ...schema].map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`).join('\n');

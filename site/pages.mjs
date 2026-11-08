@@ -101,6 +101,28 @@ const lmsFeature = (p) => html`
   </div>
 </section>`;
 
+const founderSection = () => {
+  const f = cfg.founder;
+  return html`
+<section class="section founder" id="founder">
+  <div class="container founder-grid">
+    <figure class="founder-photo reveal">
+      <img src="${f.photo}" srcset="${f.photoSmall} 600w, ${f.photo} 1000w" sizes="(max-width: 900px) 92vw, 520px" width="1000" height="750" alt="${f.alt}" decoding="async">
+      <figcaption><b>${f.name}</b><span>${f.role}</span></figcaption>
+    </figure>
+    <div class="reveal">
+      <span class="eyebrow">Meet the founder</span>
+      <h2>${f.title}</h2>
+      ${f.paragraphs.map((t, i) => html`<p class="${i === 0 ? 'big' : ''}">${t}</p>`)}
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${waLink()}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Talk to me on WhatsApp</a>
+        <a class="btn btn-outline" href="${mailLink()}" data-track="email_click">${icon('mail', { size: 18 })} Email</a>
+      </div>
+    </div>
+  </div>
+</section>`;
+};
+
 export function home() {
   const showcase = [desktop.screenshots[0], desktop.screenshots[1], desktop.screenshots[3], desktop.screenshots[4], desktop.screenshots[5], P('product-code-decoder').screenshots[0]];
   const body = html`
@@ -128,6 +150,8 @@ export function home() {
     </div>
   </div>
 </section>
+
+${founderSection()}
 
 ${lmsFeature(lms)}
 

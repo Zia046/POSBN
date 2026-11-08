@@ -452,3 +452,19 @@ button.loading .btn-label::after { content: '...'; }
   .announce { font-size: 0.82rem; }
   .flow-card { padding: 16px 14px 18px; }
 }
+
+/* ---------- Founder ---------- */
+.founder-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
+.founder-photo { position: relative; margin: 0; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(11, 22, 48, 0.28); border: 1px solid rgba(23, 105, 224, 0.25); }
+.founder-photo::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent 50%, rgba(11, 22, 48, 0.9)); }
+.founder-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.founder-photo figcaption { position: absolute; left: 22px; right: 22px; bottom: 18px; z-index: 2; display: grid; gap: 2px; color: #fff; }
+.founder-photo figcaption b { font: 700 1.35rem var(--font-h); }
+.founder-photo figcaption span { color: #c9e0ff; font-weight: 600; font-size: 0.95rem; }
+.founder h2 { margin-bottom: 14px; }
+.founder p { margin-bottom: 14px; }
+.founder .btn-row { margin-top: 22px; }
+@media (max-width: 900px) {
+  .founder-grid { grid-template-columns: 1fr; gap: 32px; }
+  .founder-photo { max-width: 560px; margin-inline: auto; }
+}
