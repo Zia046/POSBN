@@ -43,6 +43,18 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     reveals.forEach(function (el) { io.observe(el); });
+    // fallback for very fast scrolling / jumps: reveal anything at or above the lower edge of the screen
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        reveals.forEach(function (el) {
+          if (!el.classList.contains('in') && el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.classList.add('in'); io.unobserve(el); }
+        });
+      });
+    }, { passive: true });
   }
 
   /* ---------- screenshot placeholders (when an image file is not there yet) ---------- */

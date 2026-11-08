@@ -47,6 +47,106 @@ export default {
   // =====================================================================
   products: [
     {
+      slug: 'lms',
+      name: 'Burhan Nexus LMS',
+      short: 'LMS',
+      category: 'Laboratory Management System',
+      badge: 'Desktop Application',
+      icon: 'microscope',
+      status: 'coming-soon',
+      statusLabel: 'In Development',
+      featured: true,
+      summary:
+        'Offline Windows software for medical laboratories: patient registration, test booking and billing, samples, result entry, verification and printed reports with a QR check, in one simple program.',
+      intro:
+        'Burhan Nexus LMS follows the real daily flow of a medical laboratory. Register the patient, book the tests and take payment, receive the sample, enter the results, let the pathologist verify them, and print a clean report. It runs on your own computer, does not need the internet for daily work, and keeps a record of every change.',
+      workflowTitle: 'From booking to released report',
+      workflowText: 'One clear path for every patient. Nothing is verified or released automatically, so a person always signs off.',
+      workflow: [
+        { icon: 'userPlus', title: 'Register', short: 'Patient and duplicate check', text: 'Register a patient or find an existing one. Duplicates are caught and mobile numbers are stored in one tidy format.' },
+        { icon: 'clipboard', title: 'Book and bill', short: 'Tests, doctor, payment', text: 'Choose the tests and the referring doctor, add a discount with a reason, take payment and print the receipt.' },
+        { icon: 'testTube', title: 'Sample', short: 'QR labels and status', text: 'Print sample labels with QR codes and track each sample. Receiving the sample is optional, so results are never blocked.' },
+        { icon: 'microscope', title: 'Result entry', short: 'Units, ranges, flags', text: 'Units and normal ranges fill in automatically. Type the result and High, Low or Critical flags appear on their own.' },
+        { icon: 'badge', title: 'Verify', short: 'Pathologist sign-off', text: 'The pathologist verifies, or returns a result for correction. A critical value needs the name of the person informed.' },
+        { icon: 'qrCode', title: 'Release report', short: 'A4 PDF with QR check', text: 'Print or export a PDF report. The QR code lets anyone check that the report is genuine.' },
+      ],
+      features: [
+        { icon: 'userPlus', title: 'Patient Registration', text: 'Register patients quickly, with duplicate detection and search by name or mobile number. Add a walk-in patient right inside the booking screen.' },
+        { icon: 'flask', title: 'Test Catalogue', text: 'Tests, parameters, units and reference ranges by gender, age and pregnancy. A starter list of standard tests can be added; your lab checks every range and price.' },
+        { icon: 'clipboard', title: 'Booking and Billing', text: 'Choose patient, tests and referring doctor, apply a discount with a reason, take payment and print the receipt in one screen.' },
+        { icon: 'receipt', title: 'Invoices and Payments', text: 'Collect balance payments, refunds and cancellations. Payments are never edited or deleted, only voided with a reason.' },
+        { icon: 'testTube', title: 'Samples and QR Labels', text: 'Print sample labels with QR codes and follow the status of each sample.' },
+        { icon: 'microscope', title: 'Result Entry', text: 'Units and ranges come in automatically, Tab and Enter move to the next box, and abnormal values are flagged for you.' },
+        { icon: 'badge', title: 'Verification Workflow', text: 'Verify, return for correction, then release. Unverified results print as PRELIMINARY.' },
+        { icon: 'fileText', title: 'Reports with QR Check', text: 'A4 reports with print preview and PDF export. Same-day tests of one patient can be combined into one report, with the referring doctor shown.' },
+        { icon: 'qrCode', title: 'Report Verification', text: 'Scan the QR code on a report to check that it is the real, released report.' },
+        { icon: 'coins', title: 'Accounts and Cash Closing', text: 'Record daily expenses, close the day with counted cash, and get date-wise reports with Excel export.' },
+        { icon: 'package', title: 'Inventory', text: 'Track reagents and supplies, stock in and use, with low-stock warnings.' },
+        { icon: 'userCog', title: 'Users and Roles', text: 'Separate logins and roles for your staff, password reset, and an audit trail of who changed what.' },
+      ],
+      moreTitle: 'Safety, data and support',
+      moreFeatures: [
+        { icon: 'database', title: 'Automatic Backup', text: 'A backup is made every day (the last 14 are kept). Back up now or restore whenever you need.' },
+        { icon: 'wifiOff', title: 'Works Offline', text: 'Runs on your own computer. Patient data is kept outside the program folder, so updates never touch it.' },
+        { icon: 'shield', title: 'Records Protected', text: 'Deleted records are only hidden. Released reports and payments can never be deleted.' },
+        { icon: 'key', title: 'Licence Key Activation', text: 'Activation is linked to your computer, with keys issued by Burhan Nexus.' },
+        { icon: 'users', title: 'Referring Doctors', text: 'Keep a list of doctors; the name appears on the report as "Referred by".' },
+        { icon: 'download', title: 'Windows Installer', text: 'A normal setup program and a first-run wizard for your lab name, logo, address and administrator.' },
+        { icon: 'globe', title: 'Urdu User Manual', text: 'A user manual in Urdu explains the daily steps, with notes on backups.' },
+        { icon: 'lock', title: 'Secure Passwords', text: 'Passwords are stored as salted hashes, and repeated wrong logins lock the account.' },
+      ],
+      safety: {
+        title: 'Built with clinical care',
+        text: 'A laboratory software must help, not decide. These rules are part of how Burhan Nexus LMS is built.',
+        points: [
+          'No reference ranges, units or prices are forced on you. Your laboratory enters and checks them.',
+          'Values are flagged only against the limits your laboratory set. The software never diagnoses.',
+          'Nothing is verified or released automatically. A person always approves the report.',
+          'Every change is written to a permanent audit trail that cannot be edited.',
+        ],
+      },
+      roadmap: {
+        title: 'On the roadmap',
+        text: 'These are planned and are not part of the first release.',
+        items: [
+          { icon: 'cpu', title: 'Analyzer connection', text: 'Receive results from lab machines (HL7, ASTM or serial). We need your machine models to build this properly.' },
+          { icon: 'whatsapp', title: 'WhatsApp and SMS reports', text: 'Send reports and reminders to patients, with their consent.' },
+          { icon: 'building', title: 'Multiple branches and LAN', text: 'Several computers on one network and more than one branch.' },
+        ],
+      },
+      screenshots: [
+        { key: 'lms-dashboard', title: 'Dashboard', src: '/assets/screenshots/lms-dashboard.png', alt: 'Burhan Nexus LMS dashboard with patients, tests, pending samples and revenue' },
+        { key: 'lms-booking', title: 'New Booking', src: '/assets/screenshots/lms-booking.png', alt: 'Burhan Nexus LMS booking screen with patient, tests and payment' },
+        { key: 'lms-results', title: 'Result Entry', src: '/assets/screenshots/lms-result-entry.png', alt: 'Burhan Nexus LMS result entry with units, ranges and flags' },
+        { key: 'lms-report', title: 'Lab Report', src: '/assets/screenshots/lms-report.png', alt: 'Burhan Nexus LMS printed laboratory report with QR code' },
+        { key: 'lms-catalogue', title: 'Test Catalogue', src: '/assets/screenshots/lms-catalogue.png', alt: 'Burhan Nexus LMS test catalogue with parameters and ranges' },
+        { key: 'lms-samples', title: 'Samples and Labels', src: '/assets/screenshots/lms-samples.png', alt: 'Burhan Nexus LMS samples screen with QR labels' },
+      ],
+      video: { url: '', title: 'Burhan Nexus LMS demonstration' },
+      offline: {
+        title: 'Built to work offline',
+        text: 'A laboratory cannot wait for the internet. Burhan Nexus LMS runs on your own computer and keeps patient data in a local database on that computer, away from the program folder.',
+        points: ['No internet needed for daily work', 'Patient data stays on your computer', 'Automatic daily backup, with restore', 'Moves to a new computer by restoring a backup'],
+      },
+      requirements: [
+        'Windows PC or laptop (64-bit)',
+        'No internet connection required for daily use',
+        'Licence key linked to your computer',
+        'Optional: printers for receipts, reports and sample labels',
+      ],
+      pricing: { title: 'Pricing', text: 'Pricing will be announced at launch. Message us to ask about early access.', plans: [], note: '' },
+      faqs: [
+        { q: 'Is Burhan Nexus LMS available now?', a: 'It is in development and being prepared for release. Message us on WhatsApp and we will tell you as soon as it is ready.' },
+        { q: 'Does it work without the internet?', a: 'Yes. Daily work runs on your own computer without internet.' },
+        { q: 'Does it give medical advice or diagnose?', a: 'No. It flags values against the limits your laboratory entered, and a person verifies and releases every report.' },
+        { q: 'Are reference ranges and prices built in?', a: 'Your laboratory enters and checks its own ranges and prices. A starter list of standard tests can be added to save typing.' },
+        { q: 'Can it connect to my lab analyzer?', a: 'Analyzer connection is planned. Tell us your machine models and we will keep them in mind.' },
+        { q: 'Is my patient data safe?', a: 'Data stays on your computer, changes are recorded in an audit trail, and a backup is made every day.' },
+      ],
+      waMessage: 'Hello, I would like to know more about Burhan Nexus LMS (Laboratory Management System) and when it will be available.',
+    },
+
+    {
       slug: 'pos-desktop',
       name: 'Burhan Nexus POS — Desktop',
       short: 'Desktop POS',
@@ -263,6 +363,7 @@ export default {
   //  SOLUTIONS (who we help)
   // =====================================================================
   solutions: [
+    { icon: 'microscope', title: 'Medical Laboratories', text: 'Run a diagnostic lab with a clear path from booking to a verified report.', points: ['Patient registration and booking', 'Result entry with automatic flags', 'Verification before release', 'QR-checked reports and daily accounts'], product: 'lms' },
     { icon: 'smartphone', title: 'Mobile Phone Shops', text: 'Sell phones and accessories with the tracking a mobile shop needs.', points: ['IMEI tracking and warranty', 'Repair jobs and slips', 'Installments (Qist) with due list', 'Product price coding'], product: 'pos-desktop' },
     { icon: 'store', title: 'General & Retail Stores', text: 'Run everyday retail with fast billing and tidy stock.', points: ['Barcode scanning and price labels', 'Low-stock alerts', 'Thermal and A4 printing', 'Daily closing report'], product: 'pos-desktop' },
     { icon: 'coins', title: 'Credit & Installment Businesses', text: 'Keep track of who owes what and collect it on time.', points: ['Customer accounts and balances', 'Cash recovery vouchers', 'WhatsApp payment reminders', 'Outstanding (baqayajat) report'], product: 'pos-desktop' },
@@ -273,6 +374,18 @@ export default {
   //  DOWNLOADS  (leave url empty until a file is really published)
   // =====================================================================
   downloads: [
+    {
+      product: 'lms',
+      name: 'Burhan Nexus LMS',
+      platform: 'Windows',
+      version: '',
+      releaseDate: '',
+      size: '',
+      url: '', // add the real installer link here when it is published
+      requirements: ['Windows PC or laptop (64-bit)', 'No internet connection required for daily use', 'Licence key linked to your computer'],
+      notes: [],
+      waMessage: 'Hello, I would like to know when Burhan Nexus LMS will be available.',
+    },
     {
       product: 'pos-desktop',
       name: 'Burhan Nexus POS — Desktop',
@@ -321,6 +434,15 @@ export default {
         { q: 'What does Burhan Nexus do?', a: 'We build practical software: desktop applications, Android apps and business management tools that make daily operations simpler.' },
         { q: 'Can you build custom software for my business?', a: 'Yes. We offer custom business software, automation and consultation. Contact us and tell us what you need.' },
         { q: 'How can I contact you?', a: 'Message us on WhatsApp, send an email, or use the contact form on our Contact page.' },
+      ],
+    },
+    {
+      title: 'Burhan Nexus LMS (Laboratory)',
+      items: [
+        { q: 'What is Burhan Nexus LMS?', a: 'It is laboratory software for Windows: patients, test booking and billing, samples, result entry, verification, printed reports with a QR check, accounts and backup.' },
+        { q: 'Is it available now?', a: 'It is in development. Message us on WhatsApp and we will tell you as soon as it is ready.' },
+        { q: 'Does it need the internet?', a: 'No. Daily work runs on your own computer, offline.' },
+        { q: 'Does the software diagnose or decide results?', a: 'No. It flags values against the limits your laboratory entered. A person always verifies and releases the report.' },
       ],
     },
     {

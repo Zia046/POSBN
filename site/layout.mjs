@@ -211,7 +211,7 @@ export const featureCard = (f) => html`
 </article>`;
 
 export const statusBadge = (p) =>
-  p.status === 'available' ? html`<span class="pill pill-ok">Available</span>` : html`<span class="pill pill-soon">Coming Soon</span>`;
+  p.status === 'available' ? html`<span class="pill pill-ok">Available</span>` : html`<span class="pill pill-soon">${p.statusLabel || 'Coming Soon'}</span>`;
 
 // Screenshot item: real image if the file exists at runtime, otherwise a clean placeholder (handled by main.js)
 export const shot = (s, { group = 'gallery', eager = false } = {}) => html`

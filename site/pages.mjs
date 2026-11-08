@@ -9,6 +9,7 @@ import {
 const { company, contact } = cfg;
 const P = (slug) => cfg.products.find((p) => p.slug === slug);
 const desktop = P('pos-desktop');
+const lms = P('lms');
 const LEGAL_DATE = '6 November 2026';
 
 // ---------- small pieces ----------
@@ -62,8 +63,8 @@ const productCard = (p, { maxFeatures = 7 } = {}) => {
   <p class="stay-tuned">${icon('rocket', { size: 18 })} Stay tuned for what comes next.</p>
 </article>`;
   return html`
-<article class="card product-card reveal">
-  <div class="pc-top"><span class="icon-chip lg">${icon(p.icon, { size: 28 })}</span><span class="pill">${p.badge}</span></div>
+<article class="card product-card reveal${p.featured ? ' featured' : ''}">
+  <div class="pc-top"><span class="icon-chip lg">${icon(p.icon, { size: 28 })}</span><span class="pill-pair">${p.featured ? html`<span class="pill pill-new">NEW</span>` : ''}<span class="pill">${p.badge}</span></span></div>
   <h3>${p.name}</h3><p class="pc-cat">${p.category}</p>
   <p>${p.summary}</p>
   ${checkList(p.features.slice(0, maxFeatures).map((f) => f.title))}
@@ -74,6 +75,32 @@ const productCard = (p, { maxFeatures = 7 } = {}) => {
 // =====================================================================
 //  HOME
 // =====================================================================
+const labFlow = (steps) => html`
+<div class="flow-card" role="img" aria-label="Laboratory workflow: ${steps.map((x) => x.title).join(', ')}">
+  <div class="flow-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><b>Lab workflow</b></div>
+  <ol class="flow-list">${steps.map((x, i) => html`<li><span class="flow-ic">${icon(x.icon, { size: 20 })}</span><span class="flow-t"><b>${x.title}</b><small>${x.short}</small></span><span class="flow-n">${i + 1}</span></li>`)}</ol>
+</div>`;
+
+const lmsFeature = (p) => html`
+<section class="section lms-feature" id="lms">
+  <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="grid-lines"></span></div>
+  <div class="container lms-grid">
+    <div class="reveal">
+      <div class="pill-row"><span class="pill pill-new">NEW</span><span class="pill pill-light">${p.statusLabel || 'Coming Soon'}</span></div>
+      <span class="eyebrow">Laboratory Management System</span>
+      <h2>${p.name}</h2>
+      <p class="lms-sub">Software for medical laboratories, from booking to a verified report.</p>
+      <p class="big">${p.intro}</p>
+      ${checkList(['Patient registration, booking and billing', 'Result entry with automatic units, ranges and flags', 'Verification before release, with QR-checked reports', 'Samples, accounts, inventory, users and daily backup', 'Works offline on your own computer'])}
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href="${productUrl(p)}">Explore Burhan Nexus LMS ${arrow}</a>
+        <a class="btn btn-ghost btn-lg" href="${waLink(p.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Ask on WhatsApp</a>
+      </div>
+    </div>
+    <div class="reveal">${labFlow(p.workflow)}</div>
+  </div>
+</section>`;
+
 export function home() {
   const showcase = [desktop.screenshots[0], desktop.screenshots[1], desktop.screenshots[3], desktop.screenshots[4], desktop.screenshots[5], P('product-code-decoder').screenshots[0]];
   const body = html`
@@ -81,6 +108,7 @@ export function home() {
   <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="grid-lines"></span></div>
   <div class="container hero-grid">
     <div class="hero-copy">
+      <a class="announce" href="/products/lms/"><span class="pill pill-new">NEW</span> Laboratory Management System, coming soon ${arrow}</a>
       <span class="eyebrow">Software Technology Company</span>
       <h1>${company.tagline}</h1>
       <p class="lead">Empowering businesses and individuals through intelligent software, innovative digital solutions, and technology designed to make everyday operations simpler, smarter, and more efficient.</p>
@@ -101,6 +129,8 @@ export function home() {
   </div>
 </section>
 
+${lmsFeature(lms)}
+
 <section class="section" id="about-intro">
   <div class="container split">
     <div class="split-text reveal">
@@ -117,7 +147,7 @@ export function home() {
 <section class="section section-alt" id="products">
   <div class="container">
     ${sectionHead({ eyebrow: 'Our Products', title: 'Software built for real businesses', text: 'Practical products you can start using today, and new ones on the way.' })}
-    <div class="grid grid-4 products-grid">${cfg.products.map((p) => productCard(p, { maxFeatures: p.slug === 'pos-desktop' ? 7 : 5 }))}</div>
+    <div class="grid grid-4 products-grid">${cfg.products.filter((p) => !p.featured).map((p) => productCard(p, { maxFeatures: p.slug === 'pos-desktop' ? 7 : 5 }))}</div>
   </div>
 </section>
 
@@ -216,7 +246,7 @@ export function productPage(p) {
         ${demoBtn}
       </div>
     </div>
-    <div class="hero-visual">${isDesktop ? laptop(hero) : phone(hero)}</div>
+    <div class="hero-visual">${p.workflow ? labFlow(p.workflow) : isDesktop ? laptop(hero) : phone(hero)}</div>
   </div>
 </section>
 
@@ -232,7 +262,7 @@ export function productPage(p) {
       <dl>
         <dt>Platform</dt><dd>${dl ? dl.platform : ''}</dd>
         <dt>Category</dt><dd>${p.category}</dd>
-        <dt>Availability</dt><dd>${available ? 'Available' : 'Coming soon'}</dd>
+        <dt>Availability</dt><dd>${available ? 'Available' : (p.statusLabel || 'Coming soon')}</dd>
         ${plan ? html`<dt>Price</dt><dd>${plan.price} (${plan.period})</dd>` : ''}
         ${p.offline && p.offline.title ? html`<dt>Internet</dt><dd>Not required</dd>` : ''}
       </dl>
@@ -251,6 +281,14 @@ ${p.concept ? html`<section class="${alt()}" id="concept">${decoderConcept(p)}</
       <div class="grid grid-4 compact">${p.moreFeatures.map(featureCard)}</div>` : ''}
   </div>
 </section>
+
+${p.workflow ? html`
+<section class="${alt()}" id="workflow">
+  <div class="container">
+    ${sectionHead({ eyebrow: 'How it works', title: p.workflowTitle, text: p.workflowText })}
+    <div class="grid grid-3">${p.workflow.map((x, i) => html`<article class="card step reveal"><span class="step-no">${i + 1}</span><h3>${x.title}</h3><p>${x.text}</p></article>`)}</div>
+  </div>
+</section>` : ''}
 
 <section class="${alt()}" id="screenshots">
   <div class="container">
@@ -273,6 +311,22 @@ ${p.offline && p.offline.title ? html`
   <div class="container split">
     <div class="reveal"><span class="eyebrow">Offline functionality</span><h2>${p.offline.title}</h2><p class="big">${p.offline.text}</p></div>
     <div class="card reveal offline-card"><span class="icon-chip lg">${icon('wifiOff', { size: 28 })}</span>${checkList(p.offline.points)}</div>
+  </div>
+</section>` : ''}
+
+${p.safety ? html`
+<section class="${alt()}" id="safety">
+  <div class="container split">
+    <div class="reveal"><span class="eyebrow">Safety</span><h2>${p.safety.title}</h2><p class="big">${p.safety.text}</p></div>
+    <div class="card reveal offline-card"><span class="icon-chip lg">${icon('shield', { size: 28 })}</span>${checkList(p.safety.points)}</div>
+  </div>
+</section>` : ''}
+
+${p.roadmap ? html`
+<section class="${alt()}" id="roadmap">
+  <div class="container">
+    ${sectionHead({ eyebrow: 'Roadmap', title: p.roadmap.title, text: p.roadmap.text })}
+    <div class="grid grid-3">${p.roadmap.items.map((x) => html`<article class="card reveal"><div class="pc-top"><span class="icon-chip">${icon(x.icon, { size: 24 })}</span><span class="pill pill-plan">Planned</span></div><h3>${x.title}</h3><p>${x.text}</p></article>`)}</div>
   </div>
 </section>` : ''}
 
