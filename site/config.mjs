@@ -43,7 +43,7 @@ export default {
     whatsapp: '923475093446', // country code, no + and no spaces
     phoneDisplay: '0347 5093446',
     email: 'Ziaullah.046@gmail.com',
-    facebook: '', // e.g. 'https://www.facebook.com/yourpage'  <-- PLEASE ADD
+    facebook: 'https://www.facebook.com/share/1LnWGzh4WG/',
     address: '', // optional, shown on Contact and About pages when filled
     hours: '', // optional, e.g. 'Mon-Sat, 10am-8pm'
   },
