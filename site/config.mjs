@@ -353,6 +353,26 @@ export default {
       screenshots: [],
     },
     {
+      slug: 'ball-bounce',
+      custom: 'ballbounce',
+      name: 'Burhan Nexus Ball Bounce',
+      short: 'Ball Bounce',
+      category: 'Free Android Game',
+      badge: 'Free Android Game',
+      icon: 'play',
+      status: 'available',
+      summary: 'A free, offline neon arcade game for Android. Keep the ball bouncing, survive as long as you can and claim a place in the Top 3.',
+      features: [
+        { icon: 'hand', title: 'Smooth paddle controls' },
+        { icon: 'zap', title: 'Gets harder as you score' },
+        { icon: 'target', title: 'One life, endless excitement' },
+        { icon: 'badge', title: 'Permanent Top 3 high scores' },
+        { icon: 'wifiOff', title: 'Completely offline' },
+      ],
+      pricing: { plans: [] },
+      screenshots: [],
+    },
+    {
       slug: '',
       name: 'Upcoming Innovations',
       short: 'Upcoming',
@@ -409,6 +429,20 @@ export default {
   //  DOWNLOADS  (leave url empty until a file is really published)
   // =====================================================================
   downloads: [
+    {
+      product: 'ball-bounce',
+      name: 'Burhan Nexus Ball Bounce',
+      platform: 'Android',
+      format: 'APK',
+      price: 'Free',
+      version: '1.0.0',
+      releaseDate: '',
+      size: '682 KB',
+      url: '/downloads/BurhanNexus-BallBounce-v1.0.0.apk',
+      requirements: ['Android 8.0 or newer', 'Works fully offline, no internet needed', 'No permissions required'],
+      notes: [],
+      waMessage: 'Hello, I downloaded Burhan Nexus Ball Bounce and have a question.',
+    },
     {
       product: 'stopwatch',
       name: 'Burhan Nexus Stopwatch',

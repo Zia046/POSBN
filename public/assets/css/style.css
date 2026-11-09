@@ -531,3 +531,91 @@ button.loading .btn-label::after { content: '...'; }
 }
 .sw-facts dd { color: #fff; }
 .sw-facts dl > div { align-items: center; }
+
+/* ===== Ball Bounce (dark neon game page) ===== */
+.bb { --bb-bg: #070a1c; --bb-bg2: #0d1230; --bb-cyan: #5fe3ff; --bb-violet: #9b6bff; --bb-pink: #ff5fb0; --bb-text: #d7def5; background: var(--bb-bg); color: var(--bb-text); }
+.bb h1, .bb h2, .bb h3 { color: #fff; }
+.bb .crumbs, .bb .crumbs a { color: #9fb0d8; }
+.bb-hero { position: relative; overflow: hidden; padding: 56px 0 72px; background: radial-gradient(circle at 80% 30%, #2a1a6e 0%, transparent 55%), radial-gradient(circle at 10% 90%, #0b3a66 0%, transparent 50%), var(--bb-bg); }
+.bb-glow { position: absolute; inset: 0; background-image: linear-gradient(rgba(95, 227, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(95, 227, 255, 0.06) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(circle at 50% 40%, #000, transparent 75%); }
+.bb-hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+.bb-hero-grid > * { min-width: 0; }
+.bb-title-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 12px 0 8px; }
+.bb-icon { border-radius: 20px; box-shadow: 0 0 0 2px rgba(95, 227, 255, 0.35), 0 10px 40px rgba(124, 92, 255, 0.5); }
+.bb-label { display: inline-block; padding: 8px 16px; border-radius: 999px; background: #1fd18a; color: #04251a; font: 800 0.82rem var(--font-h); letter-spacing: 0.14em; }
+.bb-hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.04; letter-spacing: 0.01em; margin: 6px 0 14px; }
+.bb-hero h1 span { background: linear-gradient(90deg, var(--bb-cyan), var(--bb-violet)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+.bb-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: #c9d4f2; max-width: 34ch; }
+.bb-btn { background: linear-gradient(90deg, #8a5bff, #28c9ff); border: 0; color: #fff; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 12px 34px rgba(80, 140, 255, 0.5); }
+.bb-btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.bb-btn.btn-xl { padding: 18px 34px; font-size: 1.1rem; }
+.bb-meta { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.bb-meta li { padding: 8px 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.14); font-size: 0.92rem; }
+.bb-meta b { color: var(--bb-cyan); margin-right: 6px; font-weight: 600; }
+.bb-offline { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: #b8f5d8; font-weight: 500; }
+.bb-offline .icon { color: #4ade9a; flex: none; }
+.bb-phones { position: relative; display: flex; justify-content: center; align-items: center; min-height: 440px; }
+.bb-phone { width: min(44%, 260px); height: auto; border-radius: 26px; border: 2px solid rgba(95, 227, 255, 0.35); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(124, 92, 255, 0.45); background: #0a0d24; }
+.bb-phone-a { transform: rotate(-5deg) translateY(10px); position: relative; z-index: 2; }
+.bb-phone-b { transform: rotate(5deg) translateY(-18px); margin-left: -6%; }
+.bb-section { padding: 76px 0; }
+.bb-alt { background: var(--bb-bg2); }
+.bb-eyebrow { display: inline-block; font: 700 0.8rem var(--font-h); letter-spacing: 0.16em; text-transform: uppercase; color: var(--bb-cyan); margin-bottom: 8px; }
+.bb-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+.bb-head h2, .bb-about h2, .bb-how h2, .bb-dl h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); }
+.bb-about { max-width: 760px; text-align: center; }
+.bb-about p { font-size: 1.08rem; line-height: 1.75; color: #c9d4f2; margin: 14px 0; }
+.bb-about b { color: #fff; }
+.bb p.bb-quote { font: 800 clamp(1.3rem, 3vw, 1.8rem) var(--font-h); color: var(--bb-cyan); text-shadow: 0 0 24px rgba(95, 227, 255, 0.5); margin: 24px 0; }
+.bb-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.bb-card { padding: 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); transition: transform 0.25s, border-color 0.25s; }
+.bb-card:hover { transform: translateY(-4px); border-color: rgba(95, 227, 255, 0.5); }
+.bb-chip { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, rgba(138, 91, 255, 0.35), rgba(40, 201, 255, 0.3)); color: var(--bb-cyan); margin-bottom: 12px; }
+.bb-card h3 { font-size: 1.08rem; margin-bottom: 6px; }
+.bb-card p { margin: 0; color: #aebbdc; font-size: 0.96rem; line-height: 1.6; }
+.bb-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.bb-shot { margin: 0; }
+.bb-shot a { display: block; border-radius: 22px; overflow: hidden; border: 2px solid rgba(95, 227, 255, 0.25); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55); aspect-ratio: 9 / 16; cursor: zoom-in; transition: transform 0.3s, box-shadow 0.3s; background: #0a0d24; }
+.bb-shot a:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0, 0, 0, 0.6), 0 0 36px rgba(124, 92, 255, 0.5); }
+.bb-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bb-shot figcaption { text-align: center; margin-top: 12px; color: #c9d4f2; font-weight: 600; font-size: 0.95rem; }
+.bb-how { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 48px; align-items: start; }
+.bb-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.bb-steps li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 14px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+.bb-steps b { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #8a5bff, #28c9ff); color: #fff; font-size: 0.9rem; }
+.bb-steps span { line-height: 1.55; }
+.bb-dl { background: radial-gradient(circle at 20% 20%, #2a1a6e, transparent 55%), var(--bb-bg); border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.bb-dl-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.bb-dl-grid > * { min-width: 0; }
+.bb-dl p { color: #c9d4f2; font-size: 1.05rem; }
+.bb-install { margin: 24px 0 0; padding-left: 22px; display: grid; gap: 8px; color: #d7def5; }
+.bb-install b { color: #fff; }
+.bb-facts { padding: 26px; border-radius: 20px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); text-align: center; }
+.bb-facts img { border-radius: 22px; margin: 0 auto 10px; display: block; box-shadow: 0 0 40px rgba(124, 92, 255, 0.5); }
+.bb-facts dl { margin: 0; text-align: left; }
+.bb-facts dl > div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.bb-facts dl > div:last-child { border-bottom: 0; }
+.bb-facts dt { color: #aebfdc; }
+.bb-facts dd { margin: 0; color: #fff; font-weight: 600; text-align: right; }
+.bb .faq-item, .bb details { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); color: #d7def5; }
+.bb summary, .bb .faq-item h3, .bb .faq-q { color: #fff; }
+.bb-brand { text-align: center; padding: 64px 0; background: #04061a; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.bb-brand img { height: 52px; width: auto; margin: 0 auto 16px; display: block; box-sizing: content-box; padding: 12px 22px; background: #eef4fd; border-radius: 16px; }
+.bb-made { font: 700 1.25rem var(--font-h); color: #fff; }
+.bb-slogan { color: #9fb0d8; margin: 4px 0 22px; }
+.bb-brand .btn-ghost { background: rgba(255, 255, 255, 0.08); color: #fff; border-color: rgba(255, 255, 255, 0.25); }
+@media (max-width: 980px) {
+  .bb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bb-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .bb-hero-grid, .bb-dl-grid, .bb-how { grid-template-columns: 1fr; gap: 36px; }
+  .bb-phones { min-height: 0; }
+  .bb-phone { width: min(42%, 240px); }
+}
+@media (max-width: 560px) {
+  .bb-grid { grid-template-columns: 1fr; }
+  .bb-section { padding: 56px 0; }
+  .bb-btn.btn-xl { width: 100%; justify-content: center; padding: 17px 20px; }
+  .bb-gallery { gap: 12px; }
+}

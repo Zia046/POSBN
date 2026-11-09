@@ -653,6 +653,180 @@ export function stopwatchPage(p) {
   });
 }
 
+
+// =====================================================================
+//  BALL BOUNCE (free Android game, dark/neon theme)
+// =====================================================================
+export function ballBouncePage(p) {
+  const dl = cfg.downloads.find((d) => d.product === 'ball-bounce');
+  const abs = cfg.siteUrl.replace(/\/$/, '');
+  const I = '/assets/img/ballbounce/';
+  const btn = (extra = '') => html`<a class="btn btn-primary btn-lg btn-download bb-btn ${extra}" href="${dl.url}" download="BurhanNexus-BallBounce-v1.0.0.apk" data-track="download_click">${icon('download', { size: 20 })}<span>DOWNLOAD APK – FREE</span></a>`;
+  const features = [
+    { icon: 'hand', title: 'Smooth, responsive controls', text: 'Slide your finger anywhere on the screen and the paddle follows.' },
+    { icon: 'zap', title: 'Increasing difficulty', text: 'The ball gets faster with time and score, so every run feels different.' },
+    { icon: 'target', title: 'One-life survival', text: 'Miss the ball once and it is game over. No continues, no second chances.' },
+    { icon: 'chart', title: 'Real-time scoring', text: 'Every paddle hit adds a point, shown live on screen.' },
+    { icon: 'badge', title: 'Permanent Top 3 leaderboard', text: 'Your three best scores are saved on your phone, even after you close the game.' },
+    { icon: 'sparkles', title: 'Neon arcade graphics', text: 'A glowing dark arcade look with particles and smooth animation.' },
+    { icon: 'headphones', title: 'Exciting sound effects', text: 'Bounce, game over and high-score sounds. You can switch sound off any time.' },
+    { icon: 'wifiOff', title: 'Completely offline', text: 'No internet connection, no account and no permissions needed.' },
+    { icon: 'gift', title: 'Free to download and play', text: 'No payment, no registration and no advertisements.' },
+  ];
+  const shots = [
+    { n: 'menu', t: 'Main menu' },
+    { n: 'play', t: 'Gameplay' },
+    { n: 'top3', t: 'Top 3 high scores' },
+    { n: 'howto', t: 'How to play' },
+  ];
+  const how = [
+    'Slide your finger left and right anywhere on the screen to move the paddle.',
+    'Keep the ball in the air. Every paddle hit scores 1 point.',
+    'Hit the ball with the edge of the paddle for a sharp angle, or the centre for a straight bounce.',
+    'The ball gets faster the longer you survive, and the paddle becomes a little shorter.',
+    'You have only ONE life. Miss the ball once and the game is over.',
+    'Beat your personal best and claim a place in the Top 3!',
+  ];
+  const faqs = [
+    { q: 'Is Ball Bounce really free?', a: 'Yes. It is free to download and play. There is no payment, registration or login, and no advertisements.' },
+    { q: 'Does it need the internet?', a: 'No. The game works completely offline.' },
+    { q: 'How do I install the APK?', a: 'Download the APK on your Android phone and open it. If Android asks, allow installing apps from your browser or file manager just for this install, then tap Install.' },
+    { q: 'Which Android versions are supported?', a: 'Android 8.0 or newer.' },
+    { q: 'Are my high scores saved?', a: 'Yes. Your personal best and Top 3 scores are saved on your phone and stay after you close the game or restart the phone.' },
+    { q: 'Why does Android warn me before installing?', a: 'The game is not installed from Google Play, so Android shows a standard warning for any APK downloaded from a website. The game itself asks for no permissions.' },
+  ];
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: 'Burhan Nexus Ball Bounce',
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Android 8.0+',
+    softwareVersion: dl.version,
+    fileSize: dl.size,
+    description: 'A free offline neon arcade game for Android. Control the paddle, keep the ball bouncing and reach the Top 3 high scores.',
+    image: abs + I + 'og.jpg',
+    downloadUrl: abs + dl.url,
+    fileFormat: 'application/vnd.android.package-archive',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+    author: { '@type': 'Organization', name: company.brand, url: cfg.siteUrl },
+  };
+  const body = html`
+<div class="bb">
+<section class="bb-hero">
+  <div class="bb-glow" aria-hidden="true"></div>
+  <div class="container bb-hero-grid">
+    <div class="bb-copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/products/">Products</a><span aria-hidden="true">/</span><span aria-current="page">Ball Bounce</span></nav>
+      <div class="bb-title-row"><img class="bb-icon" src="${I}icon-192.png" width="84" height="84" alt="Ball Bounce game icon"><span class="bb-label">FREE ANDROID GAME</span></div>
+      <h1>BURHAN NEXUS<br><span>BALL BOUNCE</span></h1>
+      <p class="bb-lead">Get ready for an exciting arcade challenge! One ball, one life, and endless excitement.</p>
+      <div class="btn-row">${btn('btn-xl')}</div>
+      <ul class="bb-meta">
+        <li><b>Version</b> ${dl.version}</li>
+        <li><b>Size</b> ${dl.size}</li>
+        <li><b>Android</b> 8.0+</li>
+        <li><b>Price</b> FREE</li>
+      </ul>
+      <p class="bb-offline">${icon('wifiOff', { size: 18 })}<span>Works offline. No internet connection required.</span></p>
+    </div>
+    <div class="bb-phones" aria-hidden="false">
+      <img class="bb-phone bb-phone-a" src="${I}menu-450.webp" srcset="${I}menu-450.webp 450w, ${I}menu-810.webp 810w" sizes="(max-width: 900px) 40vw, 260px" width="450" height="800" alt="Ball Bounce main menu screen" fetchpriority="high" decoding="async">
+      <img class="bb-phone bb-phone-b" src="${I}top3-450.webp" srcset="${I}top3-450.webp 450w, ${I}top3-810.webp 810w" sizes="(max-width: 900px) 40vw, 260px" width="450" height="800" alt="Ball Bounce Top 3 high scores screen" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="bb-section">
+  <div class="container bb-about">
+    <span class="bb-eyebrow">About the game</span>
+    <h2>Get ready for an exciting arcade challenge!</h2>
+    <p>Introducing <b>Ball Bounce</b>, a fun and addictive arcade game developed by Burhan Nexus. Your mission is simple: control the paddle, keep the ball bouncing, and survive as long as possible!</p>
+    <p>But don't get too comfortable! As time passes and your score increases, the game becomes progressively more challenging.</p>
+    <p class="bb-quote">One ball, one life, and endless excitement!</p>
+    <p>Challenge yourself, beat your personal best, and secure your place among the Top 3 high scores.</p>
+  </div>
+</section>
+
+<section class="bb-section bb-alt" id="features">
+  <div class="container">
+    <div class="bb-head"><span class="bb-eyebrow">Game features</span><h2>Simple to learn. Hard to put down.</h2></div>
+    <div class="bb-grid">${features.map((f) => html`<div class="bb-card"><span class="bb-chip">${icon(f.icon, { size: 22 })}</span><h3>${f.title}</h3><p>${f.text}</p></div>`)}</div>
+  </div>
+</section>
+
+<section class="bb-section" id="screenshots">
+  <div class="container">
+    <div class="bb-head"><span class="bb-eyebrow">Screenshots</span><h2>See the game in action</h2></div>
+    <div class="bb-gallery">${shots.map((s) => html`
+      <figure class="bb-shot">
+        <a href="${I}${s.n}-810.webp" data-lightbox="ballbounce" data-caption="${s.t}" aria-label="Enlarge: ${s.t}"><img src="${I}${s.n}-450.webp" width="450" height="800" alt="Ball Bounce screenshot: ${s.t}" loading="lazy" decoding="async"></a>
+        <figcaption>${s.t}</figcaption>
+      </figure>`)}</div>
+  </div>
+</section>
+
+<section class="bb-section bb-alt" id="how-to-play">
+  <div class="container bb-how">
+    <div><span class="bb-eyebrow">How to play</span><h2>Six simple steps</h2></div>
+    <ol class="bb-steps">${how.map((h, i) => html`<li><b>${i + 1}</b><span>${h}</span></li>`)}</ol>
+  </div>
+</section>
+
+<section class="bb-section bb-dl" id="download">
+  <div class="container bb-dl-grid">
+    <div>
+      <span class="bb-eyebrow">Free download</span>
+      <h2>Download Ball Bounce – FREE</h2>
+      <p>Direct APK download. No registration, no login and no advertisements.</p>
+      <div class="btn-row">${btn('btn-xl')}</div>
+      <ol class="bb-install">
+        <li>Download the APK on your Android phone.</li>
+        <li>Open the downloaded file.</li>
+        <li>If Android asks, allow installing from your browser or file manager, then tap <b>Install</b>.</li>
+      </ol>
+    </div>
+    <div class="bb-facts">
+      <img src="${I}icon-192.png" width="96" height="96" alt="" loading="lazy">
+      <dl>
+        <div><dt>Game</dt><dd>Burhan Nexus Ball Bounce</dd></div>
+        <div><dt>Developer</dt><dd>Burhan Nexus</dd></div>
+        <div><dt>Platform</dt><dd>Android 8.0+</dd></div>
+        <div><dt>Version</dt><dd>${dl.version}</dd></div>
+        <div><dt>File size</dt><dd>${dl.size}</dd></div>
+        <div><dt>File format</dt><dd>APK</dd></div>
+        <div><dt>Internet</dt><dd>Not required</dd></div>
+        <div><dt>Price</dt><dd>FREE</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="bb-section">
+  <div class="container narrow">
+    <div class="bb-head"><span class="bb-eyebrow">Questions</span><h2>Frequently asked questions</h2></div>
+    ${faqList(faqs)}
+  </div>
+</section>
+
+<section class="bb-brand">
+  <div class="container">
+    <img src="${company.logo}" alt="${company.brand} logo" width="220" height="56" loading="lazy" decoding="async">
+    <p class="bb-made">Developed by Burhan Nexus</p>
+    <p class="bb-slogan">Smart Software. Better Solutions.</p>
+    <div class="btn-row center"><a class="btn btn-ghost" href="/products/">More Burhan Nexus software</a><a class="btn btn-ghost" href="/contact/">Contact us</a></div>
+  </div>
+</section>
+</div>`;
+  return page({
+    path: '/products/ball-bounce/',
+    title: 'Burhan Nexus Ball Bounce: Free Android Arcade Game (APK)',
+    description: 'Download Burhan Nexus Ball Bounce for free: an offline neon arcade game for Android. Keep the ball bouncing, survive as long as you can and reach the Top 3.',
+    image: I + 'og.jpg',
+    schema: [ld],
+    body,
+  });
+}
+
 // =====================================================================
 //  CONTACT
 // =====================================================================
