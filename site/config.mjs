@@ -333,6 +333,26 @@ export default {
     },
 
     {
+      slug: 'stopwatch',
+      custom: 'stopwatch',
+      name: 'Burhan Nexus Stopwatch',
+      short: 'Stopwatch',
+      category: 'Free Windows Utility',
+      badge: 'Free Download',
+      icon: 'timer',
+      status: 'available',
+      summary: 'A free Windows stopwatch with a classic digital display, always-on-top window, themes and simple Start, Pause and Reset controls.',
+      features: [
+        { icon: 'monitor', title: 'Classic digital display' },
+        { icon: 'timer', title: 'Accurate stopwatch' },
+        { icon: 'play', title: 'Start, Pause and Reset' },
+        { icon: 'pin', title: 'Always on top' },
+        { icon: 'palette', title: 'Classic, Dark and Light themes' },
+      ],
+      pricing: { plans: [] },
+      screenshots: [],
+    },
+    {
       slug: '',
       name: 'Upcoming Innovations',
       short: 'Upcoming',
@@ -389,6 +409,20 @@ export default {
   //  DOWNLOADS  (leave url empty until a file is really published)
   // =====================================================================
   downloads: [
+    {
+      product: 'stopwatch',
+      name: 'Burhan Nexus Stopwatch',
+      platform: 'Windows',
+      format: 'ZIP',
+      price: 'Free',
+      version: '',
+      releaseDate: '',
+      size: '',
+      url: '/downloads/BurhanNexusStopwatch-win-x64.zip',
+      requirements: ['Windows 10 or Windows 11 (64-bit)', 'No internet connection needed', 'No installation: extract the ZIP and run BurhanNexusStopwatch.exe'],
+      notes: [],
+      waMessage: 'Hello, I downloaded Burhan Nexus Stopwatch and have a question.',
+    },
     {
       product: 'lms',
       name: 'Burhan Nexus LMS',

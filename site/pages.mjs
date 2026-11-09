@@ -171,7 +171,7 @@ ${lmsFeature(lms)}
 <section class="section section-alt" id="products">
   <div class="container">
     ${sectionHead({ eyebrow: 'Our Products', title: 'Software built for real businesses', text: 'Practical products you can start using today, and new ones on the way.' })}
-    <div class="grid grid-4 products-grid">${cfg.products.filter((p) => !p.featured).map((p) => productCard(p, { maxFeatures: p.slug === 'pos-desktop' ? 7 : 5 }))}</div>
+    <div class="grid grid-3 products-grid">${cfg.products.filter((p) => !p.featured).map((p) => productCard(p, { maxFeatures: p.slug === 'pos-desktop' ? 7 : 5 }))}</div>
   </div>
 </section>
 
@@ -519,6 +519,141 @@ ${ctaBand({ title: 'Ready to Make Your Business Smarter?', text: 'Discover how B
 }
 
 // =====================================================================
+//  STOPWATCH (free download page)
+// =====================================================================
+export function stopwatchPage(p) {
+  const dl = cfg.downloads.find((d) => d.product === 'stopwatch');
+  const abs = cfg.siteUrl.replace(/\/$/, '');
+  const shot = '/assets/img/stopwatch-screenshot.webp';
+  const shotSm = '/assets/img/stopwatch-screenshot-768.webp';
+  const btn = (extra = '') => html`<a class="btn btn-primary btn-lg btn-download ${extra}" href="${dl.url}" download data-track="download_click">${icon('download', { size: 20 })}<span>DOWNLOAD FOR FREE</span></a>`;
+  const features = [
+    { icon: 'monitor', title: 'Clean, modern interface', text: 'A classic digital LCD-style display inspired by Casio watches, with large, easy-to-read digits.' },
+    { icon: 'timer', title: 'Accurate stopwatch', text: 'High-precision timing that shows hours, minutes, seconds and milliseconds.' },
+    { icon: 'play', title: 'Easy-to-use controls', text: 'Just three buttons: Start, Pause and Reset. Nothing to learn.' },
+    { icon: 'pin', title: 'Always on top', text: 'Keep the stopwatch floating above your other windows while you work.' },
+    { icon: 'maximize', title: 'Compact and resizable', text: 'A small desktop-friendly window that you can resize with your mouse.' },
+    { icon: 'clock', title: 'Live clock and date', text: 'See the current time, date and day right above the stopwatch.' },
+    { icon: 'palette', title: 'Themes and settings', text: 'Choose the Classic LCD, Dark or Light theme and adjust your display preferences.' },
+    { icon: 'monitor', title: 'Remembers your window', text: 'Your preferred window position and size are remembered next time.' },
+    { icon: 'wifiOff', title: 'Works offline', text: 'No internet connection and no account needed. Extract the ZIP and run it.' },
+  ];
+  const faqs = [
+    { q: 'Is it really free?', a: 'Yes. Burhan Nexus Stopwatch is free to download and use. There is no registration, login or payment.' },
+    { q: 'How do I install it?', a: 'Download the ZIP file, extract it to any folder, then double-click BurhanNexusStopwatch.exe. No separate installation is needed.' },
+    { q: 'Which Windows versions are supported?', a: 'It is designed for Windows 10 and Windows 11 (64-bit).' },
+    { q: 'Windows says "Windows protected your PC". Is that normal?', a: 'The app is not yet code-signed, so Windows may show this message. Click "More info" and then "Run anyway".' },
+    { q: 'Does it need the internet?', a: 'No. It works fully offline.' },
+  ];
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: p.name,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Windows 10, Windows 11',
+    description: 'A free Windows stopwatch with a classic digital display, always-on-top window, themes and simple Start, Pause and Reset controls.',
+    image: abs + '/assets/img/stopwatch-og.jpg',
+    downloadUrl: abs + dl.url,
+    fileFormat: 'application/zip',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+    author: { '@type': 'Organization', name: company.brand, url: cfg.siteUrl },
+  };
+  const body = html`
+<section class="page-hero product-hero sw-hero">
+  <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="grid-lines"></span></div>
+  <div class="container sw-hero-grid">
+    <div class="sw-copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/products/">Products</a><span aria-hidden="true">/</span><span aria-current="page">Stopwatch</span></nav>
+      <div class="pill-row"><span class="pill pill-free">FREE</span><span class="pill pill-light">Windows</span></div>
+      <h1>Burhan Nexus Stopwatch</h1>
+      <p class="sw-tagline">Precision Timing. Simple Design. Complete Control.</p>
+      <p class="lead">Meet Burhan Nexus Stopwatch, a lightweight, modern, and easy-to-use Windows stopwatch designed for accuracy, convenience, and everyday productivity.</p>
+      <div class="btn-row">${btn()}<a class="btn btn-ghost btn-lg" href="#features">See features</a></div>
+      <ul class="sw-assure"><li>${icon('check', { size: 16 })} 100% free</li><li>${icon('check', { size: 16 })} No registration</li><li>${icon('check', { size: 16 })} Direct ZIP download</li></ul>
+    </div>
+    <figure class="sw-shot">
+      <img src="${shot}" srcset="${shotSm} 768w, ${shot} 1536w" sizes="(max-width: 900px) 92vw, 640px" width="1536" height="1024" alt="Burhan Nexus Stopwatch showing the digital stopwatch display with Start, Pause and Reset buttons" fetchpriority="high" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">About the software</span>
+      <h2>Timing made simple and effortless</h2>
+      <p class="big">Whether you need to track working hours, measure performance, manage tasks, conduct experiments, or simply keep track of time, Burhan Nexus Stopwatch makes timing simple and effortless.</p>
+    </div>
+    <div class="reveal sw-uses">
+      <div class="card"><span class="icon-chip">${icon('clock', { size: 22 })}</span><b>Working hours</b></div>
+      <div class="card"><span class="icon-chip">${icon('trend', { size: 22 })}</span><b>Performance</b></div>
+      <div class="card"><span class="icon-chip">${icon('clipboard', { size: 22 })}</span><b>Tasks</b></div>
+      <div class="card"><span class="icon-chip">${icon('flask', { size: 22 })}</span><b>Experiments</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="features">
+  <div class="container">
+    ${sectionHead({ eyebrow: 'Key features', title: 'Everything you need, nothing you do not' })}
+    <div class="grid grid-3">${features.map(featureCard)}</div>
+  </div>
+</section>
+
+<section class="section sw-download" id="download">
+  <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="grid-lines"></span></div>
+  <div class="container sw-dl-grid">
+    <div class="reveal">
+      <span class="eyebrow">Free download</span>
+      <h2>Get Burhan Nexus Stopwatch – FREE</h2>
+      <p class="big">Download your free copy of Burhan Nexus Stopwatch and enjoy a simple, reliable, and convenient timing experience.</p>
+      <div class="btn-row">${btn('btn-xl')}</div>
+      <ol class="sw-steps">
+        <li><b>1</b><span>Download the ZIP file.</span></li>
+        <li><b>2</b><span>Extract it to any folder.</span></li>
+        <li><b>3</b><span>Run <code>BurhanNexusStopwatch.exe</code>.</span></li>
+      </ol>
+      <p class="sw-note">${icon('info', { size: 16 })}<span>If Windows shows "Windows protected your PC", click <b>More info</b> and then <b>Run anyway</b>. The app is not yet code-signed.</span></p>
+    </div>
+    <div class="card sw-facts reveal">
+      <h3>Software details</h3>
+      <dl>
+        <div><dt>Software Name</dt><dd>Burhan Nexus Stopwatch</dd></div>
+        <div><dt>Developer</dt><dd>Burhan Nexus</dd></div>
+        <div><dt>Platform</dt><dd>Windows 10 / 11</dd></div>
+        <div><dt>File Format</dt><dd>ZIP</dd></div>
+        <div><dt>Price</dt><dd><span class="pill pill-free">FREE</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    ${sectionHead({ eyebrow: 'Questions', title: 'Frequently asked questions' })}
+    ${faqList(faqs)}
+  </div>
+</section>
+
+<section class="sw-brand">
+  <div class="container">
+    <img src="${company.logo}" alt="${company.brand} logo" width="220" height="56" loading="lazy" decoding="async">
+    <p class="sw-made">Developed with ❤️ by Burhan Nexus</p>
+    <p class="sw-slogan">Smart Software. Better Solutions.</p>
+    <div class="btn-row center"><a class="btn btn-outline-light" href="/products/">More Burhan Nexus software</a><a class="btn btn-ghost" href="/contact/">Contact us</a></div>
+  </div>
+</section>`;
+  return page({
+    path: '/products/stopwatch/',
+    title: 'Burhan Nexus Stopwatch: Free Windows Stopwatch Download',
+    description: 'Download Burhan Nexus Stopwatch for free: a modern Windows stopwatch with a classic digital display, always-on-top window, themes and simple Start, Pause and Reset controls.',
+    image: '/assets/img/stopwatch-og.jpg',
+    schema: [ld],
+    body,
+  });
+}
+
+// =====================================================================
 //  CONTACT
 // =====================================================================
 export function contactPage() {
@@ -578,16 +713,18 @@ ${pageHero({ eyebrow: 'Downloads', title: 'Download Center', text: 'Official dow
         </div>
         <dl class="dl-meta">
           <div><dt>Platform</dt><dd>${d.platform}</dd></div>
-          <div><dt>Current version</dt><dd>${d.version || tba}</dd></div>
-          <div><dt>Release date</dt><dd>${d.releaseDate || tba}</dd></div>
-          <div><dt>File size</dt><dd>${d.size || tba}</dd></div>
+          ${d.format ? html`<div><dt>File format</dt><dd>${d.format}</dd></div>` : ''}
+          ${d.price ? html`<div><dt>Price</dt><dd>${d.price}</dd></div>` : ''}
+          ${(d.version || !d.url) ? html`<div><dt>Current version</dt><dd>${d.version || tba}</dd></div>` : ''}
+          ${(d.releaseDate || !d.url) ? html`<div><dt>Release date</dt><dd>${d.releaseDate || tba}</dd></div>` : ''}
+          ${(d.size || !d.url) ? html`<div><dt>File size</dt><dd>${d.size || tba}</dd></div>` : ''}
         </dl>
         <h3>System requirements</h3>${checkList(d.requirements)}
-        <h3>Release notes</h3>
-        ${d.notes.length ? html`<ul class="plain">${d.notes.map((n) => html`<li>${n}</li>`)}</ul>` : html`<p class="muted">Release notes will be shown here when the first version is released.</p>`}
+        ${(d.notes.length || !d.url) ? html`<h3>Release notes</h3>
+        ${d.notes.length ? html`<ul class="plain">${d.notes.map((n) => html`<li>${n}</li>`)}</ul>` : html`<p class="muted">Release notes will be shown here when the first version is released.</p>`}` : ''}
         <div class="btn-row">
           ${d.url
-            ? html`<a class="btn btn-primary btn-lg" href="${d.url}" data-track="download_click" download>${icon('download', { size: 18 })} Download ${d.platform} version</a>`
+            ? html`<a class="btn btn-primary btn-lg" href="${d.url}" data-track="download_click" download>${icon('download', { size: 18 })} ${d.price === 'Free' ? 'Download for free' : `Download ${d.platform} version`}</a>`
             : html`<span class="btn btn-disabled btn-lg" aria-disabled="true">${icon('download', { size: 18 })} Download not available yet</span>`}
           <a class="btn btn-outline" href="${waLink(d.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Request on WhatsApp</a>
           <a class="link-arrow" href="${productUrl(prod)}">Product details ${arrow}</a>

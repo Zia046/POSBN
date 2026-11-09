@@ -16,7 +16,7 @@ cpSync(join(ROOT, 'public'), DIST, { recursive: true });
 const pages = [
   ['/', pg.home()],
   ['/products/', pg.products()],
-  ...cfg.products.filter((p) => p.slug).map((p) => [`/products/${p.slug}/`, pg.productPage(p)]),
+  ...cfg.products.filter((p) => p.slug).map((p) => [`/products/${p.slug}/`, p.custom === 'stopwatch' ? pg.stopwatchPage(p) : pg.productPage(p)]),
   ['/solutions/', pg.solutions()],
   ['/services/', pg.services()],
   ['/about/', pg.about()],
@@ -78,7 +78,7 @@ const warn = [];
 if (!cfg.contact.facebook) warn.push('contact.facebook is empty: the Facebook link is hidden');
 if (!cfg.analytics.ga4Id) warn.push('analytics.ga4Id is empty: Google Analytics is off');
 for (const d of cfg.downloads) if (!d.url) warn.push(`downloads: "${d.name}" has no url: the download button is disabled`);
-for (const p of cfg.products) if (p.slug && !p.video.url) warn.push(`product "${p.short}" has no demo video url`);
+for (const p of cfg.products) if (p.slug && !p.custom && !(p.video && p.video.url)) warn.push(`product "${p.short}" has no demo video url`);
 if (warn.length) console.log('Config notes:\n  - ' + warn.join('\n  - '));
 if (missing.size) {
   console.error('\nBROKEN LINKS:');

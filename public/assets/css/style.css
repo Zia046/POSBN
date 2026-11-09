@@ -468,3 +468,66 @@ button.loading .btn-label::after { content: '...'; }
   .founder-grid { grid-template-columns: 1fr; gap: 32px; }
   .founder-photo { max-width: 560px; margin-inline: auto; }
 }
+
+/* ---------- Stopwatch free download page ---------- */
+.pill-free { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; letter-spacing: 0.1em; font-weight: 700; }
+.sw-hero-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
+.sw-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); }
+.sw-tagline { font: 600 clamp(1.05rem, 2vw, 1.3rem) var(--font-h); color: var(--electric); margin-top: 10px; }
+.sw-assure { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; color: #c3d0e8; font-size: 0.92rem; }
+.sw-assure li { display: inline-flex; align-items: center; gap: 6px; }
+.sw-assure .icon { color: #4ade9a; }
+.sw-shot { margin: 0; position: relative; }
+.sw-shot::before { content: ''; position: absolute; inset: -6% -4%; z-index: 0; background: radial-gradient(closest-side, rgba(56, 165, 255, 0.35), transparent); filter: blur(24px); }
+.sw-shot img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35); }
+.sw-uses { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.sw-uses .card { display: flex; align-items: center; gap: 14px; padding: 18px; }
+.sw-uses b { font: 600 1rem var(--font-h); }
+
+.btn-download { gap: 10px; box-shadow: 0 14px 34px rgba(23, 105, 224, 0.45); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn-download:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(23, 105, 224, 0.6); }
+.btn-download .icon { transition: transform 0.25s ease; }
+.btn-download:hover .icon { transform: translateY(3px); }
+.btn-xl { padding: 18px 38px; font-size: 1.15rem; }
+
+.sw-download { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-3), var(--navy-2) 55%, #123a7a); color: #fff; }
+.sw-download .container { position: relative; z-index: 1; }
+.sw-dl-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.sw-download h2 { color: #fff; }
+.sw-download .eyebrow { color: var(--electric); }
+.sw-download .big { color: #c3d3ee; }
+.sw-steps { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; }
+.sw-steps li { display: flex; align-items: center; gap: 12px; color: #e3ecfb; }
+.sw-steps b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--grad); color: #fff; font-size: 0.85rem; flex: none; }
+.sw-steps code { background: rgba(255, 255, 255, 0.12); padding: 2px 8px; border-radius: 6px; font-size: 0.9em; }
+.sw-note { display: flex; gap: 8px; align-items: flex-start; margin-top: 20px; color: #aebfdc; font-size: 0.9rem; }
+.sw-note .icon { flex: none; margin-top: 3px; color: var(--electric); }
+.sw-facts { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.16); color: #fff; backdrop-filter: blur(6px); }
+.sw-facts h3 { color: #fff; margin-bottom: 8px; }
+.sw-facts dl { margin: 0; }
+.sw-facts dl > div { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.sw-facts dl > div:last-child { border-bottom: 0; }
+.sw-facts dt { color: #aebfdc; }
+.sw-facts dd { margin: 0; font-weight: 600; text-align: right; }
+
+.sw-brand { text-align: center; padding: 64px 0; background: linear-gradient(180deg, #fff, #eef4fd); border-top: 1px solid var(--line, #e3eaf5); }
+.sw-brand img { height: 52px; width: auto; margin: 0 auto 16px; display: block; }
+.sw-brand .btn-outline-light { color: var(--royal); border-color: var(--royal); }
+.sw-brand .btn-outline-light:hover { background: var(--royal); color: #fff; }
+.sw-brand .btn-ghost { color: var(--navy); background: #fff; border-color: #cddcf3; }
+.sw-made { font: 700 1.25rem var(--font-h); color: var(--navy); }
+.sw-slogan { color: var(--muted, #5b6b85); margin: 4px 0 22px; }
+
+@media (max-width: 900px) {
+  .sw-hero-grid, .sw-dl-grid { grid-template-columns: 1fr; gap: 36px; }
+  .btn-xl { padding: 16px 28px; font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) { .btn-download, .btn-download .icon { transition: none; } }
+
+.split > * { min-width: 0; }
+.sw-uses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 520px) {
+  .sw-uses .card { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px; }
+}
+.sw-facts dd { color: #fff; }
+.sw-facts dl > div { align-items: center; }
