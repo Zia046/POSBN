@@ -68,9 +68,11 @@ export default {
       category: 'Laboratory Management System',
       badge: 'Desktop Application',
       icon: 'microscope',
-      status: 'coming-soon',
-      statusLabel: 'In Development',
+      status: 'available',
+      statusLabel: '7-Day Free Trial',
       featured: true,
+      trial: { days: 7 },
+      tutorial: { url: '', title: 'Burhan Nexus LMS – Complete Video Tutorial' }, // paste the YouTube embed URL here (https://www.youtube.com/embed/VIDEO_ID)
       summary:
         'Offline Windows software for medical laboratories: patient registration, test booking and billing, samples, result entry, verification and printed reports with a QR check, in one simple program.',
       intro:
@@ -149,16 +151,18 @@ export default {
         'Licence key linked to your computer',
         'Optional: printers for receipts, reports and sample labels',
       ],
-      pricing: { title: 'Pricing', text: 'Pricing will be announced at launch. Message us to ask about early access.', plans: [], note: '' },
+      pricing: { title: 'Full version', text: 'Contact Burhan Nexus for full-version pricing, licensing information and purchase details.', plans: [], note: '' },
       faqs: [
-        { q: 'Is Burhan Nexus LMS available now?', a: 'It is in development and being prepared for release. Message us on WhatsApp and we will tell you as soon as it is ready.' },
+        { q: 'Is there a free trial?', a: 'Yes. You can download a 7-day free trial installer for Windows from this page, install it and try the software. It is a limited trial version, not the full version.' },
+        { q: 'What happens after the 7 days?', a: 'Contact Burhan Nexus on WhatsApp or email to get the full licensed version. Pricing and licensing details are shared when you contact us.' },
         { q: 'Does it work without the internet?', a: 'Yes. Daily work runs on your own computer without internet.' },
         { q: 'Does it give medical advice or diagnose?', a: 'No. It flags values against the limits your laboratory entered, and a person verifies and releases every report.' },
         { q: 'Are reference ranges and prices built in?', a: 'Your laboratory enters and checks its own ranges and prices. A starter list of standard tests can be added to save typing.' },
         { q: 'Can it connect to my lab analyzer?', a: 'Analyzer connection is planned. Tell us your machine models and we will keep them in mind.' },
         { q: 'Is my patient data safe?', a: 'Data stays on your computer, changes are recorded in an audit trail, and a backup is made every day.' },
       ],
-      waMessage: 'Hello, I would like to know more about Burhan Nexus LMS (Laboratory Management System) and when it will be available.',
+      waMessage: 'Hello, I would like to know more about Burhan Nexus LMS (Laboratory Management System).',
+      fullMessage: 'Hello, I tried the 7-day free trial of Burhan Nexus LMS and I would like the full licensed version. Please share pricing and licensing details.',
     },
 
     {
@@ -461,13 +465,16 @@ export default {
       product: 'lms',
       name: 'Burhan Nexus LMS',
       platform: 'Windows',
-      version: '',
+      format: 'EXE Installer',
+      price: '7-Day Free Trial',
+      ctaLabel: 'Download 7-day free trial',
+      version: '1.0.58',
       releaseDate: '',
-      size: '',
-      url: '', // add the real installer link here when it is published
-      requirements: ['Windows PC or laptop (64-bit)', 'No internet connection required for daily use', 'Licence key linked to your computer'],
+      size: '76 MB',
+      url: '/downloads/BurhanNexus-LMS-Setup.exe',
+      requirements: ['Windows PC or laptop (64-bit)', 'No internet connection required for daily use', 'This is a limited 7-day trial. Contact Burhan Nexus for the full licensed version'],
       notes: [],
-      waMessage: 'Hello, I would like to know when Burhan Nexus LMS will be available.',
+      waMessage: 'Hello, I downloaded the Burhan Nexus LMS 7-day free trial and have a question.',
     },
     {
       product: 'pos-desktop',

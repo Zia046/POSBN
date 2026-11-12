@@ -93,8 +93,8 @@ const lmsFeature = (p) => html`
       <p class="big">${p.intro}</p>
       ${checkList(['Patient registration, booking and billing', 'Result entry with automatic units, ranges and flags', 'Verification before release, with QR-checked reports', 'Samples, accounts, inventory, users and daily backup', 'Works offline on your own computer'])}
       <div class="btn-row">
-        <a class="btn btn-primary btn-lg" href="${productUrl(p)}">Explore Burhan Nexus LMS ${arrow}</a>
-        <a class="btn btn-ghost btn-lg" href="${waLink(p.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Ask on WhatsApp</a>
+        <a class="btn btn-primary btn-lg" href="${productUrl(p)}#trial" data-track="trial_jump_click">${icon('download', { size: 18 })} Get the 7-Day Free Trial</a>
+        <a class="btn btn-ghost btn-lg" href="${productUrl(p)}">Explore Burhan Nexus LMS ${arrow}</a>
       </div>
     </div>
     <div class="reveal">${labFlow(p.workflow)}</div>
@@ -130,7 +130,7 @@ export function home() {
   <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="grid-lines"></span></div>
   <div class="container hero-grid">
     <div class="hero-copy">
-      <a class="announce" href="/products/lms/"><span class="pill pill-new">NEW</span> Laboratory Management System, coming soon ${arrow}</a>
+      <a class="announce" href="/products/lms/"><span class="pill pill-new">NEW</span> Laboratory Management System: 7-day free trial ${arrow}</a>
       <span class="eyebrow">Software Technology Company</span>
       <h1>${company.tagline}</h1>
       <p class="lead">Empowering businesses and individuals through intelligent software, innovative digital solutions, and technology designed to make everyday operations simpler, smarter, and more efficient.</p>
@@ -239,6 +239,56 @@ ${ctaBand({ title: 'Not sure which product fits?', text: 'Tell us about your bus
 // =====================================================================
 //  PRODUCT DETAIL
 // =====================================================================
+
+function trialSections(p, dl) {
+  const full = waLink(p.fullMessage);
+  const tut = p.tutorial || {};
+  return html`
+<section class="section trial" id="trial">
+  <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="grid-lines"></span></div>
+  <div class="container trial-grid">
+    <div class="reveal">
+      <span class="pill pill-trial">${p.trial.days}-DAY FREE TRIAL</span>
+      <h2>Burhan Nexus LMS – 7 Days Free Trial</h2>
+      <p class="big">Experience the power of Burhan Nexus LMS with our 7-day free trial. Download, install, and explore its features to discover how it can improve your laboratory's daily operations.</p>
+      <div class="btn-row"><a class="btn btn-primary btn-lg btn-download btn-xl" href="${dl.url}" download data-track="download_click">${icon('download', { size: 20 })}<span>DOWNLOAD 7-DAY FREE TRIAL (WINDOWS EXE)</span></a></div>
+      <p class="trial-notice">${icon('info', { size: 18 })}<span>This is a limited 7-day trial version. After the trial period, contact Burhan Nexus to obtain the full licensed version.</span></p>
+    </div>
+    <div class="card trial-facts reveal">
+      <h3>Trial details</h3>
+      <dl>
+        <div><dt>Free Trial Duration</dt><dd>7 Days</dd></div>
+        <div><dt>Operating System</dt><dd>Windows</dd></div>
+        <div><dt>File Type</dt><dd>EXE Installer</dd></div>
+        <div><dt>Developer</dt><dd>Burhan Nexus</dd></div>
+        <div><dt>Version</dt><dd>${dl.version}</dd></div>
+        <div><dt>File Size</dt><dd>${dl.size}</dd></div>
+        <div><dt>License Type</dt><dd>7-Day Free Trial</dd></div>
+        <div><dt>Full Version</dt><dd>Available on request</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section full-version" id="full-version">
+  <div class="container fv-box reveal">
+    <span class="icon-chip lg">${icon('key', { size: 28 })}</span>
+    <h2>Want the Full Version?</h2>
+    <p class="big">Enjoying Burhan Nexus LMS? Upgrade to the complete licensed version and continue managing your laboratory with confidence. Contact Burhan Nexus for full-version pricing, licensing information, and purchase details.</p>
+    <div class="btn-row center"><a class="btn btn-primary btn-lg btn-xl" href="${full}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 20 })} CONTACT FOR FULL VERSION</a><a class="btn btn-outline btn-lg" href="${mailLink()}" data-track="email_click">${icon('mail', { size: 18 })} Email us</a></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="tutorial">
+  <div class="container narrow">
+    ${sectionHead({ eyebrow: 'Video tutorial', title: tut.title || 'Burhan Nexus LMS – Complete Video Tutorial' })}
+    ${tut.url
+      ? html`<div class="video reveal"><iframe src="${tut.url}" title="${tut.title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+      : html`<div class="video video-empty reveal">${icon('play', { size: 40 })}<p><strong>Complete video tutorial coming soon!</strong></p><p>A step-by-step YouTube guide will be available shortly to help you install, configure, and use Burhan Nexus LMS.</p></div>`}
+  </div>
+</section>`;
+}
+
 export function productPage(p) {
   const dl = cfg.downloads.find((d) => d.product === p.slug);
   const available = p.status === 'available';
@@ -266,13 +316,18 @@ export function productPage(p) {
       <p class="lead">${p.summary}</p>
       ${plan ? html`<p class="price-chip"><strong>${plan.price}</strong> ${plan.period}${plan.highlight ? html` <span class="dot">•</span> <b>${plan.highlight}</b>` : ''}</p>` : ''}
       <div class="btn-row">
-        <a class="btn btn-primary btn-lg" href="${waLink(p.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} ${available ? 'Purchase Inquiry on WhatsApp' : 'Ask on WhatsApp'}</a>
-        ${demoBtn}
+        ${p.trial && demoUrl
+          ? html`<a class="btn btn-primary btn-lg" href="#trial" data-track="trial_jump_click">${icon('download', { size: 18 })} 7-Day Free Trial</a>
+        <a class="btn btn-outline-light btn-lg" href="${waLink(p.fullMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Contact for Full Version</a>`
+          : html`<a class="btn btn-primary btn-lg" href="${waLink(p.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} ${available ? 'Purchase Inquiry on WhatsApp' : 'Ask on WhatsApp'}</a>
+        ${demoBtn}`}
       </div>
     </div>
     <div class="hero-visual">${p.workflow ? labFlow(p.workflow) : isDesktop ? laptop(hero) : phone(hero)}</div>
   </div>
 </section>
+
+${p.trial && dl ? trialSections(p, dl) : ''}
 
 <section class="${alt()}" id="overview">
   <div class="container overview">
@@ -286,7 +341,7 @@ export function productPage(p) {
       <dl>
         <dt>Platform</dt><dd>${dl ? dl.platform : ''}</dd>
         <dt>Category</dt><dd>${p.category}</dd>
-        <dt>Availability</dt><dd>${available ? 'Available' : (p.statusLabel || 'Coming soon')}</dd>
+        <dt>Availability</dt><dd>${p.trial ? '7-day free trial' : available ? 'Available' : (p.statusLabel || 'Coming soon')}</dd>
         ${plan ? html`<dt>Price</dt><dd>${plan.price} (${plan.period})</dd>` : ''}
         ${p.offline && p.offline.title ? html`<dt>Internet</dt><dd>Not required</dd>` : ''}
       </dl>
@@ -321,14 +376,14 @@ ${p.workflow ? html`
   </div>
 </section>
 
-<section class="${alt()}" id="video">
+${p.trial ? '' : html`<section class="${alt()}" id="video">
   <div class="container narrow">
     ${sectionHead({ eyebrow: 'Demonstration', title: 'Product demonstration video' })}
     ${p.video.url
       ? html`<div class="video reveal"><iframe src="${p.video.url}" title="${p.video.title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
       : html`<div class="video video-empty reveal">${icon('play', { size: 40 })}<p><strong>Demonstration video coming soon</strong></p><p>Want to see it working? <a href="${waLink(p.waMessage)}" target="_blank" rel="noopener">Ask us for a live demo on WhatsApp</a>.</p></div>`}
   </div>
-</section>
+</section>`}
 
 ${p.offline && p.offline.title ? html`
 <section class="${alt()}" id="offline">
@@ -361,7 +416,7 @@ ${p.roadmap ? html`
   </div>
 </section>
 
-<section class="${alt()}" id="pricing">
+${p.trial ? '' : html`<section class="${alt()}" id="pricing">
   <div class="container narrow">
     ${sectionHead({ eyebrow: 'Pricing', title: p.pricing.title, text: p.pricing.text })}
     ${p.pricing.plans.length
@@ -376,7 +431,7 @@ ${p.roadmap ? html`
       </div>`)
       : html`<div class="plan reveal plan-soon"><p>Pricing will be shared at launch.</p><a class="btn btn-primary" href="${waLink(p.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Ask on WhatsApp</a></div>`}
   </div>
-</section>
+</section>`}
 
 <section class="${alt()}" id="faq">
   <div class="container narrow">
@@ -385,7 +440,7 @@ ${p.roadmap ? html`
   </div>
 </section>
 
-${ctaBand({ title: `Interested in ${p.short}?`, text: 'Message us and we will answer your questions, show you a demo and help you get started.', primary: ['Contact Our Team', '/contact/'], secondary: ['All Products', '/products/'] })}`;
+${ctaBand({ title: `Interested in ${p.short}?`, text: p.trial ? 'Try it free for 7 days, then message us for the full licensed version.' : 'Message us and we will answer your questions, show you a demo and help you get started.', primary: ['Contact Our Team', '/contact/'], secondary: ['All Products', '/products/'] })}`;
 
   const schema = [
     {
@@ -396,6 +451,7 @@ ${ctaBand({ title: `Interested in ${p.short}?`, text: 'Message us and we will an
       operatingSystem: isDesktop ? 'Windows' : 'Android',
       description: p.summary,
       publisher: { '@type': 'Organization', name: company.brand },
+      ...(p.trial && dl ? { softwareVersion: dl.version, fileFormat: 'application/vnd.microsoft.portable-executable', downloadUrl: cfg.siteUrl.replace(/\/$/, '') + dl.url, offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR', description: '7-day free trial. Contact Burhan Nexus for the full licensed version.' } } : {}),
       ...(available && plan ? { offers: { '@type': 'Offer', price: plan.price.replace(/[^0-9.]/g, ''), priceCurrency: 'PKR' } } : {}),
     },
   ];
@@ -898,7 +954,7 @@ ${pageHero({ eyebrow: 'Downloads', title: 'Download Center', text: 'Official dow
         ${d.notes.length ? html`<ul class="plain">${d.notes.map((n) => html`<li>${n}</li>`)}</ul>` : html`<p class="muted">Release notes will be shown here when the first version is released.</p>`}` : ''}
         <div class="btn-row">
           ${d.url
-            ? html`<a class="btn btn-primary btn-lg" href="${d.url}" data-track="download_click" download>${icon('download', { size: 18 })} ${d.price === 'Free' ? 'Download for free' : `Download ${d.platform} version`}</a>`
+            ? html`<a class="btn btn-primary btn-lg" href="${d.url}" data-track="download_click" download>${icon('download', { size: 18 })} ${d.ctaLabel || (d.price === 'Free' ? 'Download for free' : `Download ${d.platform} version`)}</a>`
             : html`<span class="btn btn-disabled btn-lg" aria-disabled="true">${icon('download', { size: 18 })} Download not available yet</span>`}
           <a class="btn btn-outline" href="${waLink(d.waMessage)}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Request on WhatsApp</a>
           <a class="link-arrow" href="${productUrl(prod)}">Product details ${arrow}</a>
@@ -976,7 +1032,7 @@ export function terms() {
 <li>You may not copy, modify, reverse engineer, resell or distribute the software or its Activation Keys without our written permission.</li>
 </ul>
 <h2>Free trial</h2>
-<p>We may offer a free trial period (currently one month for Burhan Nexus POS — Desktop). When the trial ends you need to buy the software to continue using it. We may change or withdraw trial offers at any time.</p>
+<p>We may offer a free trial period (currently one month for Burhan Nexus POS — Desktop and 7 days for Burhan Nexus LMS). When the trial ends you need to buy the software to continue using it. We may change or withdraw trial offers at any time.</p>
 <h2>Pricing and payment</h2>
 <p>Prices shown on the website are for guidance and may change. The price agreed with you when you buy applies to your purchase.</p>
 <h2>Your data and backups</h2>

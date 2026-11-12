@@ -31,3 +31,10 @@
     Content-Disposition = "attachment; filename=BurhanNexus-BallBounce-v1.0.0.apk"
     Cache-Control = "public, max-age=3600"
     Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/downloads/*.exe"
+  [headers.values]
+    Content-Type = "application/vnd.microsoft.portable-executable"
+    Content-Disposition = "attachment; filename=BurhanNexus-LMS-Setup.exe"
+    Cache-Control = "public, max-age=3600"
