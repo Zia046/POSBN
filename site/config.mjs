@@ -72,7 +72,7 @@ export default {
       statusLabel: '7-Day Free Trial',
       featured: true,
       trial: { days: 7 },
-      tutorial: { url: '', title: 'Burhan Nexus LMS – Complete Video Tutorial' }, // paste the YouTube embed URL here (https://www.youtube.com/embed/VIDEO_ID)
+      tutorial: { url: 'https://www.youtube-nocookie.com/embed/6LT5oWF_ExY', title: 'Burhan Nexus LMS – Complete Video Tutorial' },
       summary:
         'Offline Windows software for medical laboratories: patient registration, test booking and billing, samples, result entry, verification and printed reports with a QR check, in one simple program.',
       intro:
