@@ -16,7 +16,7 @@ cpSync(join(ROOT, 'public'), DIST, { recursive: true });
 const pages = [
   ['/', pg.home()],
   ['/products/', pg.products()],
-  ...cfg.products.filter((p) => p.slug).map((p) => [`/products/${p.slug}/`, p.custom === 'stopwatch' ? pg.stopwatchPage(p) : p.custom === 'ballbounce' ? pg.ballBouncePage(p) : pg.productPage(p)]),
+  ...cfg.products.filter((p) => p.slug).map((p) => [`/products/${p.slug}/`, p.custom === 'stopwatch' ? pg.stopwatchPage(p) : p.custom === 'ballbounce' ? pg.ballBouncePage(p) : p.custom === 'hospital' ? pg.hospitalPage(p) : pg.productPage(p)]),
   ['/solutions/', pg.solutions()],
   ['/services/', pg.services()],
   ['/about/', pg.about()],

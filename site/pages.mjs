@@ -154,6 +154,7 @@ export function home() {
 ${founderSection()}
 
 ${lmsFeature(lms)}
+${hmsTeaser()}
 
 <section class="section" id="about-intro">
   <div class="container split">
@@ -878,6 +879,165 @@ export function ballBouncePage(p) {
     title: 'Burhan Nexus Ball Bounce: Free Android Arcade Game (APK)',
     description: 'Download Burhan Nexus Ball Bounce for free: an offline neon arcade game for Android. Keep the ball bouncing, survive as long as you can and reach the Top 3.',
     image: I + 'og.jpg',
+    schema: [ld],
+    body,
+  });
+}
+
+
+// =====================================================================
+//  HOSPITAL MANAGEMENT (coming soon showcase)
+// =====================================================================
+const HMS = '/assets/img/hms/';
+const hmsMonitor = (eager) => html`
+<div class="hm-monitor">
+  <div class="hm-bezel">
+    <div class="hm-bar" aria-hidden="true"><i></i><i></i><i></i><span>Burhan Nexus HMS</span></div>
+    <a class="hm-screen" href="${HMS}dashboard-1120.webp" data-lightbox="hms" data-caption="Burhan Nexus Hospital Management: dashboard" aria-label="Enlarge the dashboard screenshot">
+      <img src="${HMS}dashboard-700.webp" srcset="${HMS}dashboard-700.webp 700w, ${HMS}dashboard-1120.webp 1120w" sizes="(max-width: 900px) 92vw, 560px" width="1120" height="1089" alt="Burhan Nexus Hospital Management dashboard showing users, license, database status, quick access and recent system activity" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    </a>
+  </div>
+  <div class="hm-neck" aria-hidden="true"></div><div class="hm-foot" aria-hidden="true"></div>
+</div>`;
+
+export function hmsTeaser() {
+  return html`
+<section class="section hm-teaser" id="hospital">
+  <div class="container hm-teaser-grid">
+    <div class="reveal">
+      <div class="pill-row"><span class="pill pill-soon-gold">COMING SOON</span></div>
+      <span class="eyebrow">Hospital Management</span>
+      <h2>Burhan Nexus Hospital Management</h2>
+      <p class="big">A web-based hospital management solution that runs on your own network. One central server and database, and every computer opens it in a browser.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href="/products/hospital-management/">See what is coming ${arrow}</a>
+        <a class="btn btn-ghost-dark btn-lg" href="${waLink('Hello, I would like to know more about Burhan Nexus Hospital Management.')}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Ask on WhatsApp</a>
+      </div>
+    </div>
+    <div class="reveal">${hmsMonitor(false)}</div>
+  </div>
+</section>`;
+}
+
+export function hospitalPage(p) {
+  const wa = waLink('Hello, I would like to know more about Burhan Nexus Hospital Management and be informed when it is ready.');
+  const abs = cfg.siteUrl.replace(/\/$/, '');
+  const features = [
+    { icon: 'globe', title: 'Web-Based Management', text: 'Open the system in a normal web browser. Nothing to install on each computer.' },
+    { icon: 'monitor', title: 'Multi-Computer Connectivity', text: 'One server, and as many client computers as the hospital needs.' },
+    { icon: 'database', title: 'Centralized Database', text: 'All data lives in one central PostgreSQL database, so every computer sees the same records.' },
+    { icon: 'cpu', title: 'LAN / Wi-Fi Network Support', text: 'Connect over your local network. The server address and port can be set to suit your hospital.' },
+    { icon: 'building', title: 'Multiple Departments and Counters', text: 'Set up hospital departments and assign each staff member to one or more of them.' },
+    { icon: 'users', title: 'Multi-User Management', text: 'Separate accounts for every person. Activate, deactivate, reset passwords and unlock accounts.' },
+    { icon: 'userCog', title: 'Role-Based Permissions', text: 'Give roles and responsibilities, with extra allow or deny rules for a single user. Enforced on the server, not just hidden on screen.' },
+    { icon: 'wallet', title: 'Financial Management Controls', text: 'Decide who may see financial figures, so amounts stay with the right people.' },
+    { icon: 'receipt', title: 'Receipt and Refund Management', text: 'A separate refund permission, and receipt printing set-up: header, footer and paper size.' },
+    { icon: 'fileText', title: 'Activity Logs and Audit History', text: 'Important actions are recorded with who, when and from which computer. Login history is kept too.' },
+    { icon: 'wifiOff', title: 'Offline Local Network Operation', text: 'Works inside your hospital network. No internet connection is needed.' },
+  ];
+  const why = [
+    { icon: 'shield', title: 'Built for control', text: 'Permissions are checked on the server, and the audit log cannot be quietly edited.' },
+    { icon: 'wifiOff', title: 'Works without the internet', text: 'Your hospital keeps working even when the internet is down.' },
+    { icon: 'database', title: 'One central record', text: 'A single database for all computers means no scattered files.' },
+    { icon: 'drive', title: 'Backup and restore', text: 'Back up the database, download the backup, and restore with an automatic safety copy first.' },
+    { icon: 'key', title: 'Your data is never held hostage', text: 'If a licence expires, the system becomes read-only. Data is never deleted.' },
+    { icon: 'handshake', title: 'Local support', text: 'Made by Burhan Nexus, with direct support on WhatsApp and email.' },
+  ];
+  const shows = [
+    ['Administration', 'Users, Departments, Responsibilities, Login History and Audit Log'],
+    ['System', 'Hospital Settings, License and Backup & Restore'],
+    ['Dashboard', 'Registered, active and inactive users, license status, database and server status'],
+    ['Quick access', 'Shortcuts to user management, permissions, settings, backup, audit log and license'],
+    ['Recent system activity', 'A live list of logins and setup events'],
+    ['Hospital configuration', 'Hospital type, location, currency, time zone and the address other computers use to connect'],
+  ];
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Burhan Nexus Hospital Management',
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Windows server, any web browser for clients',
+    description: 'A web-based hospital management solution for local networks. Coming soon.',
+    image: abs + HMS + 'og.jpg',
+    publisher: { '@type': 'Organization', name: company.brand, url: cfg.siteUrl },
+  };
+  const body = html`
+<div class="hm">
+<section class="hm-hero">
+  <div class="hm-bg" aria-hidden="true"><span class="hm-orb a"></span><span class="hm-orb b"></span><span class="hm-grid"></span></div>
+  <div class="container hm-hero-grid">
+    <div class="hm-copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/products/">Products</a><span aria-hidden="true">/</span><span aria-current="page">Hospital Management</span></nav>
+      <span class="hm-soon">${icon('clock', { size: 16 })} COMING SOON</span>
+      <h1>BURHAN NEXUS <span>HOSPITAL MANAGEMENT</span></h1>
+      <p class="hm-sub">Smart Hospital Management. Simplified Healthcare Operations.</p>
+      <p class="hm-lead">A powerful web-based hospital management solution designed to streamline hospital operations, centralize management, and simplify everyday healthcare administration.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg hm-btn" href="${wa}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Get Launch Updates</a>
+        <a class="btn btn-outline-light btn-lg" href="#features">Explore Features</a>
+      </div>
+      <ul class="hm-chips"><li>Government Hospitals</li><li>Private Hospitals</li><li>Healthcare Facilities</li></ul>
+    </div>
+    <div class="hm-visual">${hmsMonitor(true)}</div>
+  </div>
+</section>
+
+<section class="hm-announce" id="coming-soon">
+  <div class="container hm-announce-box reveal">
+    <span class="hm-soon gold">${icon('rocket', { size: 16 })} COMING SOON</span>
+    <h2>Something new for hospital administration is on the way</h2>
+    <p>Burhan Nexus Hospital Management is under development. The core system is ready: setup, login, users, departments, permissions, branding, licensing, audit log and backup. Clinical modules such as OPD, Emergency, Laboratory and X-Ray will follow in later phases.</p>
+    <div class="btn-row center"><a class="btn btn-primary btn-lg hm-btn" href="${wa}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 18 })} Ask on WhatsApp</a><a class="btn btn-ghost-dark btn-lg" href="${mailLink()}" data-track="email_click">${icon('mail', { size: 18 })} Email us</a></div>
+  </div>
+</section>
+
+<section class="hm-section" id="features">
+  <div class="container">
+    <div class="hm-head"><span class="hm-eyebrow">Key features</span><h2>Everything your hospital administration needs to start with</h2></div>
+    <div class="hm-cards">${features.map((f) => html`<article class="hm-card reveal"><span class="hm-chip">${icon(f.icon, { size: 24 })}</span><h3>${f.title}</h3><p>${f.text}</p></article>`)}</div>
+  </div>
+</section>
+
+<section class="hm-section hm-alt" id="why">
+  <div class="container">
+    <div class="hm-head"><span class="hm-eyebrow">Why choose Burhan Nexus</span><h2>Technology that simplifies your business</h2></div>
+    <div class="hm-why">${why.map((f) => html`<div class="hm-why-item reveal"><span class="hm-chip sm">${icon(f.icon, { size: 22 })}</span><div><h3>${f.title}</h3><p>${f.text}</p></div></div>`)}</div>
+  </div>
+</section>
+
+<section class="hm-section" id="screenshot">
+  <div class="container hm-show">
+    <div class="hm-show-visual reveal">${hmsMonitor(false)}</div>
+    <div class="reveal">
+      <span class="hm-eyebrow">Software preview</span>
+      <h2>A clear dashboard from the first login</h2>
+      <p class="hm-lead dark">This is the real software screen. Click it to enlarge. The names and figures shown are sample data from a test setup.</p>
+      <dl class="hm-shows">${shows.map(([t, d]) => html`<div><dt>${t}</dt><dd>${d}</dd></div>`)}</dl>
+    </div>
+  </div>
+</section>
+
+<section class="hm-contact" id="contact">
+  <div class="container hm-contact-grid">
+    <div>
+      <img class="hm-logo" src="${company.logo}" alt="${company.brand} logo" width="220" height="56" loading="lazy" decoding="async">
+      <h2>Interested in Burhan Nexus Hospital Management?</h2>
+      <p>Contact Burhan Nexus to know more and to be informed as soon as it is ready.</p>
+      <p class="hm-tag">Technology That Simplifies Your Business.</p>
+    </div>
+    <div class="hm-contact-card">
+      <a class="btn btn-primary btn-lg hm-btn" href="${wa}" target="_blank" rel="noopener" data-track="whatsapp_click">${icon('whatsapp', { size: 20 })} WhatsApp: ${contact.phoneDisplay}</a>
+      <a class="btn btn-outline-light btn-lg" href="${mailLink()}" data-track="email_click">${icon('mail', { size: 20 })} ${contact.email}</a>
+      <a class="btn btn-ghost-light" href="/contact/">Contact page</a>
+    </div>
+  </div>
+</section>
+</div>`;
+  return page({
+    path: '/products/hospital-management/',
+    title: 'Burhan Nexus Hospital Management: Web-Based Hospital Software (Coming Soon)',
+    description: 'Burhan Nexus Hospital Management is a web-based hospital management solution for your local network: central database, multi-user access, role-based permissions and audit history. Coming soon.',
+    image: HMS + 'og.jpg',
     schema: [ld],
     body,
   });
